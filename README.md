@@ -1,5 +1,5 @@
-# Needs API KEY to work
-
-# Getting Started with Create React App
-
+# Quotem App - developed and created with React
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Needs API KEY to work
+
