@@ -1,0 +1,40 @@
+@import "./var";
+@import "./mixins";
+@import "./landingHome";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  &::-webkit-scrollbar {
+      width: 0.5rem;
+  }
+  &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+  }
+  &::-webkit-scrollbar-track {
+  background: whitesmoke;
+  }
+}
+
+body {
+  font-family: $main;
+  -webkit-font-smoothing: antialiased;
+  // width:100%;
+}
+
+h1 {
+  
+  @include respond-to('small') {
+    font-size: 40px;
+  }
+  @include respond-to('medium') {
+    font-size: 60px;
+  }
+  @include respond-to('large') {
+    font-size: 80px;
+  }
+}

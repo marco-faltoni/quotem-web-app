@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './style/app.scss';
+import LandingHome from "./pages/LandingHome";
+//Router
+import { Switch, Route, useLocation } from "react-router-dom";
 
 function App() {
+  
+  const location = useLocation();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Quotem App...developed with <strong>React.</strong> 
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch location={location} key={location.pathname}>
+        <Route path="/" exact>
+          <LandingHome/>
+        </Route>
+        {/* <Route path={['/poems/:id', '/poems']}>
+          <PoemsPage/>
+        </Route>
+        <Route path={['/quotes/:id', '/quotes']}>
+          <QuotesPages/>
+        </Route> */}
+      </Switch>
     </div>
   );
 }

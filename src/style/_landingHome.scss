@@ -1,0 +1,22 @@
+h2 {
+
+  font-family: $titles;
+  font-size: 60px;
+}
+h1 {
+  font-family: $quotable;
+  font-size: 90px;
+}
+p, a{
+  width: 600px;
+  font-weight: 200;
+  font-size: 30px;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

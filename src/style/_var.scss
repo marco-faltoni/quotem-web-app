@@ -1,0 +1,38 @@
+//Breakpoints
+$smallMobileDown: 320px;
+$mediumMobileDown: 579px;
+$mobileDown: 767px;
+$tabletDown: 991px;
+$largeTabletDown: 1023px;
+$desktopSmallDown: 1199px;
+$desktopDown: 1439px;
+$desktopBigDown: 1599px;
+$fullHdDown: 1919px;
+
+$smallMobileUp: 321px;
+$tabletUp: 768px;
+$largeTabletUp: 1024px;
+$desktopSmallUp: 1200px;
+$desktopUp: 1440px;
+$desktopBigUp: 1600px;
+
+$breakpoints: (
+  'smallMobileUp':  ( min-width: $smallMobileUp ),
+  'tabletUp':  ( min-width: $tabletUp ),
+  "largeTabletUp": ( min-width: $largeTabletUp ),
+  "desktopSmallUp": ( min-width: $desktopSmallUp ),
+  "desktopUp": ( min-width: $desktopUp ),
+  "desktopBigUp": ( min-width: $desktopBigUp ),
+) !default;
+
+//Colors
+$white: #ffffff;
+$grey: #E0E2E4;
+$black: #17181A;
+$poem: #F4E2C6;
+$quote: #1389F2;
+
+// fonts family
+$quotable: 'Great Vibes', cursive;
+$titles: 'Cormorant', serif;
+$main: 'Glory', sans-serif;
