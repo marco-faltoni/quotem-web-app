@@ -8,6 +8,8 @@ const LandingHome = () => {
   // getting back the data from redux
   // const {} = useSelector((store) => store.);
 
+
+
   return (
     <div className="wrapper">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
