@@ -1,22 +1,180 @@
-h2 {
-
-  font-family: $titles;
-  font-size: 60px;
-}
-h1 {
-  font-family: $quotable;
-  font-size: 90px;
-}
-p, a{
-  width: 600px;
-  font-weight: 200;
-  font-size: 30px;
-}
-
-.wrapper {
+.wrapper-home {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  .header {
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    padding: 0 3rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 3fr 1fr;
+    justify-items: stretch;
+    h1 {
+      justify-self: center;
+    }
+    svg {
+      justify-self: flex-end;
+      cursor: pointer;
+    }
+  }
+  .wrapper-qp {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .wrapper-half {
+      width: 50%;
+      min-height: 100vh;
+      padding: 0 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // align-items: center;
+      @include respond-to('largeTabletUp') {
+        padding-left: 6rem;
+      }
+      h2 {
+        line-height: 1;
+        padding-bottom: 1rem;
+      }
+      h3 {
+        line-height: 1.3;
+        padding-bottom: 2rem;
+      }
+      h3, span {
+        font-weight: 200;
+        font-size: 16px;
+        font-style: italic;
+        @include respond-to('largeTabletUp') {
+          font-size: 20px;
+        }
+        @include respond-to('desktopBigUp') {
+          font-size: 26px;
+        }
+        
+      }
+      h4 {
+        cursor: pointer;
+        position: relative;
+        @include respond-to('largeTabletUp') {
+          width: fit-content;
+        }
+        // &::after { 
+        //   content: "";
+        //   position: absolute;
+        //   left: 120%;
+        //   top: 55%;
+        //   height: 0.5px;
+        //   width: 4rem;
+        //   background-color: #17181A;
+        // }
+      }
+      .big-tl {
+        position: absolute;
+        font-size: 20rem;
+        opacity: 0.1;
+        @include respond-to('largeTabletUp') {
+          font-size: 14rem;
+        }
+        @include respond-to('desktopBigUp') {
+          font-size: 20rem;
+        }
+        &.pm {
+          left: -1.5%;
+          top: 5%;
+          opacity: 1;
+          color: white;
+          @include respond-to('desktopBigUp') {
+            top: 10%;
+          }
+        }
+        &.qt {
+          bottom: 14%;
+          right: -2%;
+        }
+      }
+      .change-page {
+        position: absolute;
+        bottom: 5%;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 1fr;
+        align-items: center;
+        width: 25%;
+        cursor: pointer;
+        .container {
+          height: 3rem;
+          @include respond-to('desktopBigUp') {
+            height: 5rem;
+          }
+        }
+        h5 {
+          grid-area: 1 / 1 / span 1 / span 3;
+          justify-self: center;
+          padding-left: 9rem;
+          font-size: 21px;
+          text-transform: uppercase;
+          @include respond-to('desktopBigUp') {
+            font-size: 30px;
+          }
+        }
+        &.pm {
+          left: 0;
+          .container {
+            background-color: $white;
+            grid-area: 1 / 1 / span 1 / span 2;
+          }
+          h5 {
+            padding-left: 9rem;
+          }
+        }
+        &.qt {
+          right: 0;
+          .container {
+            background-color: $grey;
+            grid-area: 1/ 2 / span 1 / span 2;
+          }
+          h5 {
+            padding-right: 9rem;
+            padding-left: 0;
+          }
+        }
+      }
+      &.poem {
+        background-color: $grey;
+        padding-top: 8rem;
+        @include respond-to('desktopBigUp') {
+          padding-top: 15rem;
+        }
+        
+      }
+      &.quote {
+        border-left: 0.5px solid #bfbfbf40;
+        align-items: flex-start;
+        padding-bottom: 17rem;
+        // text-align: right;
+        .first {
+          padding-bottom: 0;
+        }
+        h3 {
+          padding-bottom: 0;
+          padding-top: 1rem;
+        }
+        .author-wrap {
+          padding-bottom: 0.5rem;
+        }
+
+      }
+      .author-wrap {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+      }
+
+    }
+  }
+
 }

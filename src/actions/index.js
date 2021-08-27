@@ -12,7 +12,7 @@ function getRandomBetween(min, max) {
 
 // action creator
 export const fetchPoemAndQuote = () => async (dispatch) => {
-    const casualNr = getRandomBetween(4, 15);
+    const casualNr = getRandomBetween(4, 10);
     const randomPoemURL = PoemsEndPoint+`/random,linecount/1;${casualNr}`;
     const randomQuoteURL = QuotesEndPoint+`/random`;
 

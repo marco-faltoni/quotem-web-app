@@ -1,35 +1,25 @@
 import React, {useState, useEffect} from "react";
 // import components
-
+import HomeHalf from '../components/HomeHalf/HomeHalf';
 import {useLocation} from 'react-router-dom';
-
+import {useSelector} from 'react-redux';
+import {HamburgerMenu} from '../style/Icon';
 
 const LandingHome = () => {
-  // getting back the data from redux
-  // const {} = useSelector((store) => store.);
-
-
 
   return (
-    <div className="wrapper">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <h1>Quotable</h1>
-        <p>
-        "Not at Home to Callers",
-            "Says the Naked Tree --",
-            "Bonnet due in April --",
-            "Wishing you Good Day --"
-        </p>
-        <h2>Emily Dickinson</h2>
+    <div className="wrapper-home">
+      <div className="header">
+        <span></span>
+        <h1>Quotem</h1>
+        <HamburgerMenu />
+      </div>
 
-        <a
-          className="App-link"
-          href="/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Discover More about this author
-        </a>
+      <div className="wrapper-qp">
+        <HomeHalf variants={"poems"}/>
+        <HomeHalf variants={"quote"}/>
+      </div>
+
     </div>
   );
 };

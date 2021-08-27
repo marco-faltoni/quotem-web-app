@@ -2,6 +2,7 @@
 @import "./mixins";
 @import "./landingHome";
 
+// general rules
 * {
   margin: 0;
   padding: 0;
@@ -22,19 +23,70 @@ html {
 
 body {
   font-family: $main;
+  color: $black;
   -webkit-font-smoothing: antialiased;
-  // width:100%;
+  user-select: none;
 }
 
 h1 {
-  
-  @include respond-to('small') {
-    font-size: 40px;
-  }
-  @include respond-to('medium') {
+  font-family: $quotable;
+  font-size: 40px;
+  letter-spacing: 1px;
+  @include respond-to('largeTabletUp') {
     font-size: 60px;
   }
-  @include respond-to('large') {
-    font-size: 80px;
+  @include respond-to('desktopSmallUp') {
+    font-size: 70px;
   }
+  @include respond-to('desktopBigUp') {
+    font-size: 90px;
+  }
+}
+h2 {
+  font-size: 30px;
+  @include respond-to('largeTabletUp') {
+    font-size: 40px;
+  }
+  @include respond-to('desktopSmallUp') {
+    font-size: 45px;
+  }
+  @include respond-to('desktopBigUp') {
+    font-size: 58px;
+  }
+}
+h2, h4 {
+  font-family: $titles;
+}
+span, a{
+  // width: 600px;
+  font-weight: 200;
+  font-size: 13px;
+  @include respond-to('largeTabletUp') {
+    font-size: 18px;
+  }
+  @include respond-to('desktopSmallUp') {
+    font-size: 21px;
+  }
+  @include respond-to('desktopBigUp') {
+    font-size: 24px;
+  }
+}
+h4 {
+  font-size: 13px;
+  font-style: italic;
+  @include respond-to('largeTabletUp') {
+    font-size: 18px;
+  }
+  @include respond-to('desktopSmallUp') {
+    font-size: 20px;
+  }
+  @include respond-to('desktopBigUp') {
+    font-size: 24px;
+  }
+}
+span {
+  display: inline-block;
+}
+.poetry-text {
+  line-height: 1.3;
 }
