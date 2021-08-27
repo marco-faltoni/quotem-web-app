@@ -11,8 +11,8 @@ function getRandomBetween(min, max) {
 }
 
 // action creator
-export const fetchPoemAndQuote = () => async (dispatch) => {
-    const casualNr = getRandomBetween(4, 10);
+export const fetchPoemAndQuote = (val) => async (dispatch) => {
+    const casualNr = getRandomBetween(4, val ? 8 : 10);
     const randomPoemURL = PoemsEndPoint+`/random,linecount/1;${casualNr}`;
     const randomQuoteURL = QuotesEndPoint+`/random`;
 
@@ -37,10 +37,42 @@ export const fetchPoemAndQuote = () => async (dispatch) => {
       })
       
     } catch (e) {
-      console.log("fetchData error:", e, randomPoemURL);
+      console.log("fetchData error:", e);
     }
+}
 
+export const fetchQuote = () => async (dispatch) => {
+    const randomQuoteURL = QuotesEndPoint+`/random`;
+    try {
+      const resFetchQuote = await axios.get(randomQuoteURL);
+      dispatch({
+        type: 'FETCH_RANDOM_QUOTES',
+        payload: {
+          randomQuotes: resFetchQuote.data,
+        }
+      })
+      
+    } catch (e) {
+      console.log("fetchData error:", e);
+    }
+}
 
+export const fetchPoem = (val) => async (dispatch) => {
+    const casualNr = getRandomBetween(4, val ? 8 : 10);
+    const randomPoemURL = PoemsEndPoint+`/random,linecount/1;${casualNr}`;
+
+    try {
+      const resFetchPoem = await axios.get(randomPoemURL);
+      dispatch({
+        type: 'FETCH_RANDOM_POEM',
+        payload: {
+          randomPoem: resFetchPoem.data,
+        }
+      })
+      
+    } catch (e) {
+      console.log("fetchData error:", e);
+    }
 }
 
 export const fetchAdvice = () => async (dispatch) => {

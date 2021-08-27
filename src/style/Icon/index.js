@@ -9,16 +9,14 @@ export const Arrow = (props) => {
 };
 
 
-// export const CloseIcon = (props) => {
-// 	return (
-// 	<svg className={props.className} onClick={props.onClick} width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-// 		<g id="search">
-// 		<rect id="Rectangle 84" x="0.5" y="0.5" width="59" height="59" rx="29.5" fill="white" stroke="#979797"/>
-// 		<path id="close" d="M36 36L24.0005 24M36 24.0011L24 36L36 24.0011Z" stroke="#1F1F1F" strokeWidth="3" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-// 		</g>
-// 	</svg>
-// 	);
-// };
+export const ReloadIcon = (props) => {
+  console.log(props);
+	return (
+    <svg className={props.className} onClick={props.onClick} width={props.size || "64"} height={props.size || "64"}viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M31.9866 10.6666C20.8965 10.6515 11.6444 19.1359 10.7013 30.1858C9.75822 41.2357 17.4388 51.1654 28.371 53.0297C39.3033 54.894 49.8407 48.0712 52.6133 37.3333H47.0639C44.3514 45.0057 36.312 49.4197 28.3825 47.5906C20.453 45.7614 15.1597 38.2717 16.0821 30.1864C17.0045 22.1011 23.8489 15.9961 31.9866 16C36.2254 16.0062 40.2836 17.7167 43.2479 20.7467L34.6666 29.3333H53.3333V10.6666L47.0639 16.9333C43.0739 12.919 37.6466 10.6632 31.9866 10.6666Z" fill="#17181A"/>
+    </svg>
+	);
+};
 
 export const HamburgerMenu = (props) =>{
   return (
