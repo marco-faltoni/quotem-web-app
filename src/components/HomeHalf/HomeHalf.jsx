@@ -4,6 +4,7 @@ import {Arrow} from '../../style/Icon';
 import {ReloadIcon} from '../../style/Icon';
 // actions
 import {fetchPoem, fetchQuote} from '../../actions/index';
+import {Link} from 'react-router-dom';
 
 const HomeHalf = (props) => {
 
@@ -53,7 +54,9 @@ const HomeHalf = (props) => {
           })}
           <div className="change-page pm">
             <div className="container"></div>
-            <h5>Go to Poems</h5>
+            <Link to={`/poems`} >
+              <h5>Go to Poems</h5>
+            </Link>
           </div>
         </>
         
@@ -88,7 +91,9 @@ const HomeHalf = (props) => {
           </div>
           <div className="change-page qt">
             <div className="container"></div>
-            <h5>Go to Quotes</h5>
+            <Link to={`/quotes`} >
+              <h5>Go to Quotes</h5>
+            </Link>
           </div>
         </>
       )}  

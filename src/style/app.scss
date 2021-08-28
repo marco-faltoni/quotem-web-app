@@ -1,5 +1,6 @@
 @import "./var";
 @import "./mixins";
+@import "./nav";
 @import "./landingHome";
 
 // general rules
@@ -86,6 +87,27 @@ h4 {
 }
 span {
   display: inline-block;
+}
+a {
+  text-decoration: none;
+  color: $black;
+}
+ul {
+  list-style: none;
+  a {
+    font-weight: 600;
+    font-family: $titles;
+    font-size: 30px;
+    @include respond-to('largeTabletUp') {
+      font-size: 18px;
+    }
+    @include respond-to('desktopSmallUp') {
+      font-size: 21px;
+    }
+    @include respond-to('desktopBigUp') {
+      font-size: 24px;
+    }
+  }
 }
 .poetry-text {
   line-height: 1.3;

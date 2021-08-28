@@ -9,24 +9,14 @@ import {useLocation} from 'react-router-dom';
 // import {fetchAdvice, fetchPoemAndQuote} from '../actions/index';
 
 
-const LandingHome = () => {
+const PoemsPage = () => {
 
   return (
-    <div className="wrapper-home">
-      {/* <div className="header">
-        <span></span>
-        <h1>Quotem</h1>
-        <HamburgerMenu />
-      </div> */}
-
-      <div className="wrapper-qp">
-        <HomeHalf variants={"poems"}/>
-        <HomeHalf variants={"quote"}/>
-      </div>
-
+    <div className="wrapper-searchpage">
+      <h3>Poems</h3>
     </div>
   );
 };
 
 
-export default LandingHome;
+export default PoemsPage;

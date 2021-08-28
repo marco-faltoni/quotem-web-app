@@ -20,9 +20,18 @@ export const ReloadIcon = (props) => {
 
 export const HamburgerMenu = (props) =>{
   return (
-    <svg width={props.size || "42"} height={props.size || "8"} viewBox="0 0 42 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={props.className} onClick={props.onClick} width={props.size || "42"} height={props.size || "8"} viewBox="0 0 42 8" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 2V0H42V2H0Z" fill={props.fill || "#2E3A59"}/>
       <path d="M10 8V6H42V8H10Z" fill={props.fill || "#2E3A59"}/>
+    </svg>
+  )
+}
+
+export const CloseIcon = (props) =>{
+  return (
+    <svg className={props.className} onClick={props.onClick} width={props.size || "27"} height={props.size || "27"} viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="1.04462" y1="25.7422" x2="25.4697" y2="1.31713" stroke="#17181A" stroke-width="2"/>
+      <line x1="1.89471" y1="1.40957" x2="26.3198" y2="25.8346" stroke="#17181A" stroke-width="2"/>
     </svg>
   )
 }
