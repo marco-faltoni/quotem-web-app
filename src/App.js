@@ -32,10 +32,10 @@ function App() {
           <LandingHome/>
         </Route>
         <Route path={['/poems/:id', '/poems']}>
-          <PoemsPage/>
+          <PoemsPage />
         </Route>
         <Route path={['/quotes/:id', '/quotes']}>
-          <QuotesPages/>
+          <QuotesPages />
         </Route>
         <Route  path="/bookmarks" exact>
           <BookmarksPage/>

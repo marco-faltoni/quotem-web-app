@@ -1,7 +1,7 @@
 import React from "react";
 // import components
-import HomeHalf from '../components/HomeHalf/HomeHalf';
-import {useLocation} from 'react-router-dom';
+import SearchHalf from '../components/SearchHalf/SearchHalf';
+import CardDetails from '../components/CardDetails/CardDetails';
 // import {HamburgerMenu} from '../style/Icon';
 // Redux
 // import {useDispatch, useSelector} from 'react-redux';
@@ -13,7 +13,11 @@ const QuotesPage = () => {
 
   return (
     <div className="wrapper-searchpage">
-      <h3>Quotes</h3>
+      <div className="wrapper-qp">
+        <SearchHalf search variants={"quote"}/>
+        <SearchHalf results variants={"quote"}/>
+      </div>
+      <CardDetails randomQuotes />
     </div>
   );
 };

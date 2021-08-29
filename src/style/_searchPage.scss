@@ -1,5 +1,223 @@
 .wrapper-searchpage {
-  .sr {
-    line-height: 1;
+  .wrapper-qp {
+    transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+    .wrapper-half {
+      .sr {
+        line-height: 0.8;
+      }
+      .input-wrapper{
+        .search {
+          display: flex;
+          align-items: center;
+          input, button {
+            color: $black;
+            font-size: 14px;
+            font-style: italic;
+            font-family: $main;
+            transition: all .7s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+            @include respond-to('largeTabletUp') {
+              font-size: 23px;
+            }
+            @include respond-to('desktopBigUp') {
+              font-size: 26px;
+            }
+          }
+          input {
+            padding: 0.7rem 0;
+            padding-left: 0.7rem;
+            border: none;
+            background: none;
+            border-top: 3px solid $white;
+            border-right: 3px solid $white;
+            width: 90%;
+            box-shadow: -6px 6px 0px -4px rgb(124 167 181 / 48%);
+            -webkit-box-shadow: -6px 6px 0px -4px rgb(124 167 181 / 48%);
+            &:focus-visible {
+              outline: none;
+            }
+            @include respond-to('largeTabletUp') {
+              padding: 1rem 0;
+              padding-left: 1rem;
+            }
+          }
+          button {
+            font-size: 18px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding-left: 1rem;
+            opacity: 0.2;
+            &:hover {
+              opacity: 1;
+            }
+            @include respond-to('largeTabletUp') {
+              font-size: 23px;
+            }
+            @include respond-to('desktopBigUp') {
+              font-size: 26px;
+            }
+          }
+        }
+        .wrapper-radios {
+          display: flex;
+          margin-top: 1rem;
+          gap: 1rem;
+          @include respond-to('largeTabletUp') {
+            gap: 2rem;
+          }
+          /* The container */
+          .container {
+            display: block;
+            position: relative;
+            margin-right: 1rem;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            color: grey;
+            font-style: italic;
+            transition: all .7s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+            font-size: 15px;
+            padding-left: 20px;
+            @include respond-to('largeTabletUp') {
+              padding-left: 35px;
+              font-size: 18px;
+            }
+          }
+
+          /* Hide the browser's default radio button */
+          .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+          }
+          /* Create a custom radio button */
+          .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 15px;
+            width: 15px;
+            background-color: $white;
+            border-radius: 5%;
+            box-shadow: -2px 2px 0px 0px  rgb(124 167 181 / 48%);
+            -webkit-box-shadow: -2px 2px 0px 0px  rgb(124 167 181 / 48%);
+            -moz-box-shadow: -2px 2px 0px 0px  rgb(124 167 181 / 48%);
+            transition: all .7s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+            @include respond-to('largeTabletUp') {
+              height: 18px;
+              width: 18px;
+            }
+          }
+
+          /* On mouse-over, add a grey background color */
+          .container:hover input ~ .checkmark {
+            background-color: #cdddeb;
+          }
+
+          /* When the radio button is checked, add a blue background */
+          .container input:checked ~ .checkmark {
+            background-color: #55acf3;
+          }
+
+          /* Create the indicator (the dot/circle - hidden when not checked) */
+          .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+          }
+
+          /* Show the indicator (dot/circle) when checked */
+          .container input:checked ~ .checkmark:after {
+            display: block;
+          }
+
+          /* Style the indicator (dot/circle) */
+          .container .checkmark:after {
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            border-radius: 5%;
+            background: $white;
+          }
+        }
+      }
+      .suggests-wrapper {
+        h3 {
+          text-transform: capitalize;
+          padding-bottom: 0.5rem;
+          @include respond-to('largeTabletUp') {
+            padding-bottom: 2rem;
+          }
+        }
+        .authors-wrapper {
+          flex-wrap: wrap;
+          display: flex;
+          gap: 1rem;
+          h4 {
+            opacity: 0.3;
+            transition: all .7s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
   }
+  .searchpage.blur {
+    filter: blur(3px);
+  }
+  .wrap-card-detail {
+    position: fixed;
+    top: 25%;
+    left: 30%;
+    transform: translateY(300%);
+    z-index: 100;
+    background-color: white;
+    box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
+    -webkit-box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
+    border: 1px solid #dbdbdb;
+    min-height: 20rem;
+    max-width: 50vw;
+    transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+    &.show {
+      transform: translateY(0%);
+    }
+    .card-wrapper.detail {
+      display: flex;
+      justify-content: space-between;
+      
+      .card-info {
+        width: 40%;
+        min-height: 20rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: $grey;
+        h3 {
+          font-family: $titles;
+          font-size: 30px;
+        }
+      }
+      .card-content {
+        width: 60%;
+        padding: 2rem;
+      }
+    }
+    .close-card {
+      cursor: pointer;
+      position: absolute;
+      right: 2%;
+      top: 4%;
+      height: 18px;
+      width: 18px;
+    }
+  }
+
 }

@@ -7,6 +7,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    &.searchpage {
+      flex-direction: column-reverse;
+      @include respond-to('largeTabletUp') {
+        flex-direction: row;
+      }
+    }
     @include respond-to('largeTabletUp') {
       flex-direction: row;
     }
@@ -63,7 +69,7 @@
           width: fit-content;
         }
       }
-      &.poem {
+      &.poem, &.search {
         background-color: $grey;
         padding-top: 2rem;
         @include respond-to('largeTabletUp') {
@@ -74,8 +80,9 @@
         }
         
       }
-      &.quote {
+      &.quote, &.results {
         border-left: 0.5px solid #bfbfbf40;
+        background-color: $white;
         align-items: flex-end;
         text-align: end;
         padding-bottom: 4rem;
@@ -106,6 +113,10 @@
           width: 300px;
           height: 300px;
         }
+      }
+      &.search {
+        z-index: 2;
+        justify-content: space-around;
       }
       .big-tl {
         position: absolute;
@@ -143,6 +154,36 @@
             bottom: 14%;
             right: -2%;
           }
+        }
+        &.qt.sr {
+          bottom: 85%;
+          transform: rotate(0deg);
+          @include respond-to('largeTabletUp') {
+            bottom: 5%;
+          }
+        }
+        &.pm.sr {
+          transform: rotate(0deg);
+          top: 49%;
+          width: 100%;
+          left: 4%;
+          @include respond-to('largeTabletUp') {
+            left: -1.5%;
+            top: 5%;
+            transform: rotate(0deg);
+          }
+          @include respond-to('desktopBigUp') {
+            top: 10%;
+          }
+        }
+      }
+      .big-tl.sr {
+        font-size: 3rem;
+        @include respond-to('largeTabletUp') {
+          font-size: 7rem;
+        }
+        @include respond-to('desktopBigUp') {
+          font-size: 9rem;
         }
       }
       .poem-wrap, .quote-wrap {

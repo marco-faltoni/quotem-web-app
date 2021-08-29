@@ -27,11 +27,19 @@ export const HamburgerMenu = (props) =>{
   )
 }
 
+export const SearchIcon = (props) =>{
+  return (
+    <svg className={props.className} onClick={props.onClick} width={props.size || "35"} height={props.size || "40"} viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2.40294 27.4346L15.8375 14L2.40294 0.565417L0.162525 2.80425L11.3599 14L0.162525 25.1957L2.40294 27.4346Z" fill="#17181A"/>
+    </svg>
+  )
+}
+
 export const CloseIcon = (props) =>{
   return (
     <svg className={props.className} onClick={props.onClick} width={props.size || "27"} height={props.size || "27"} viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="1.04462" y1="25.7422" x2="25.4697" y2="1.31713" stroke="#17181A" stroke-width="2"/>
-      <line x1="1.89471" y1="1.40957" x2="26.3198" y2="25.8346" stroke="#17181A" stroke-width="2"/>
+      <line x1="1.04462" y1="25.7422" x2="25.4697" y2="1.31713" stroke="#17181A" strokeWidth="2"/>
+      <line x1="1.89471" y1="1.40957" x2="26.3198" y2="25.8346" stroke="#17181A" strokeWidth="2"/>
     </svg>
   )
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import {Arrow} from '../../style/Icon';
-import {ReloadIcon} from '../../style/Icon';
 // actions
 import {fetchPoem, fetchQuote} from '../../actions/index';
 import {Link} from 'react-router-dom';

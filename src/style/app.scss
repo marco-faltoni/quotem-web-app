@@ -2,8 +2,8 @@
 @import "./mixins";
 @import "./nav";
 @import "./landingHome";
-@import "./resultsPage";
 @import "./searchPage";
+@import "./resultsPage";
 
 // general rules
 * {
@@ -13,15 +13,21 @@
 }
 
 html {
-  &::-webkit-scrollbar {
-      width: 0.5rem;
-  }
-  &::-webkit-scrollbar-thumb {
-      background-color: darkgrey;
-  }
-  &::-webkit-scrollbar-track {
-  background: whitesmoke;
-  }
+  scrollbar-width: normal;
+  scrollbar-color: $grey $white;
+}
+
+.wrapper-cards::-webkit-scrollbar {
+  width: 0.3vw;
+}
+.wrapper-cards::-webkit-scrollbar-thumb {
+  background-color: $grey;
+}
+.wrapper-cards::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(187, 187, 187);
+}
+.wrapper-cards::-webkit-scrollbar-track {
+  background: $white;
 }
 
 body {
@@ -29,6 +35,7 @@ body {
   color: $black;
   -webkit-font-smoothing: antialiased;
   user-select: none;
+  
 }
 
 h1 {
