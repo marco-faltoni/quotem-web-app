@@ -1,6 +1,6 @@
 import React from "react";
 // import components
-import SearchHalf from '../components/SearchHalf/SearchHalf';
+// import HomeHalf from '../components/HomeHalf/HomeHalf';
 import {useLocation} from 'react-router-dom';
 // import {HamburgerMenu} from '../style/Icon';
 // Redux
@@ -9,17 +9,14 @@ import {useLocation} from 'react-router-dom';
 // import {fetchAdvice, fetchPoemAndQuote} from '../actions/index';
 
 
-const PoemsPage = () => {
+const Suggests = (props) => {
 
   return (
-    <div className="wrapper-searchpage">
-      <div className="wrapper-qp">
-        <SearchHalf search variants={"poems"}/>
-        <SearchHalf results/>
-      </div>
+    <div className={`suggests-wrapper`}>
+      <h3>Suggests</h3>
     </div>
   );
 };
 
 
-export default PoemsPage;
+export default Suggests;
