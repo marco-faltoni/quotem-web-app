@@ -39,10 +39,14 @@ export const fetchSearch = (type, text, val) => async (dispatch) => {
   }
 
   try {
+    dispatch({
+      type: 'TOGGLE_LOADER_SEARCHPAGE',
+      payload: {
+        value: true,
+      }
+    });
     const resFetch = await axios.get(fetchURL);
-    console.log(resFetch);
-
-
+    // console.log(resFetch);
     
     if (type === "poem") {
       if (resFetch.data.reason) {
