@@ -1,0 +1,155 @@
+.wrapper-bookmarks {
+  .wrapper-qp {
+    .wrapper-half {
+      max-height: 100vh;
+      padding-bottom: 0rem;
+      padding-top: 6rem;
+      
+      @include respond-to('largeTabletUp') {
+        padding-top: 0;
+        padding: 11rem 3rem;
+      }
+      .big-tl.pm, .big-tl.qt {
+        @include respond-to('largeTabletUp') {
+          font-size: 6rem;
+        }
+      }
+      .big-tl.qt  {
+        @include respond-to('largeTabletUp') {
+          bottom: 2%;
+        }
+      }
+      .big-tl.pm  {
+        @include respond-to('largeTabletUp') {
+          top: 2%;
+        }
+        @include respond-to('desktopBigUp') {
+          top: 5%;
+        }
+      }
+      .wrapper-cards {
+        height: 88%;
+        width: 100%;
+        overflow-y: scroll;
+        display: initial;
+        padding: 0rem 1rem;
+        @include respond-to('largeTabletUp') {
+          height: unset;
+          max-height: 90%;
+          display: grid;
+          grid-gap: 1rem 1rem;
+          grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+        }
+        @include respond-to('desktopBigUp') {
+          grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        }
+        .go-back {
+          cursor: pointer;
+          font-style: italic;
+          font-weight: 600;
+          color: #7ca7b5d9;
+        }
+        .card-wrapper {
+          height: 90%;
+          width: 98%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
+          -webkit-box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
+          cursor: pointer;
+          border: 1px solid #dbdbdb;
+          @include respond-to('largeTabletUp') {
+            margin: unset;
+            height: 18rem;
+            width: unset;
+          }
+          @include respond-to('desktopBigUp') {
+            height: 25rem;
+          }
+          .card-info, .card-content {
+            height: 50%;
+            padding: 1rem;
+            overflow-y: hidden;
+          }
+          .card-info {
+            background-color: $grey;
+            h3 {
+              padding-top: 0;
+              font-family: $titles;
+              font-size: 20px;
+              padding-bottom: 0;
+            }
+            h4 {
+              font-size: 16px;
+            }
+          }
+          .card-content {
+            h5 {
+              position: relative;
+              overflow: hidden;
+              max-height: 100%;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              text-overflow: ellipsis;
+              font-size: 16px;
+              font-weight: 300;
+              @include respond-to('largeTabletUp') {
+                -webkit-line-clamp: 6;
+              }
+            }
+            h5 span {
+              font-size: 14px;
+              @include respond-to('desktopBigUp') {
+                font-size: 16px;
+              }
+            }
+          }
+        }
+        .mySwiper {
+          height: 100%;
+          width: 100%;
+          .swiper-pagination-bullets-dynamic {
+            bottom: 0;
+          }
+          .swiper-pagination-bullet-active-main {
+            background-color: #55acf3;
+          }
+        }
+      }
+    } 
+  }
+  .wrap-btn {
+    position: absolute;
+    bottom: 7%;
+    left: 43%;
+    transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+    &:hover {
+      bottom:8%;
+      button {
+        transform: scale(1.05);
+      }
+
+    }
+    button {
+      transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+      padding: 1rem 2rem;
+      background: $white;
+      border: none;
+      border: 1px solid #dbdbdb;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: $titles;
+      box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
+      -webkit-box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
+      text-transform: uppercase;
+      cursor: pointer;
+      @include respond-to('desktopBigUp') {
+        font-size: 20px;
+      }
+
+    }
+  }
+}

@@ -31,13 +31,14 @@ const SearchHalf = (props) => {
     }else if (results && variants === "quote") {
       if (quotesRandomEmpty === 0) {
         dispatch(fetchRandomList("quote"));
-        dispatch({
-          type: 'TOGGLE_LOADER_SEARCHPAGE',
-          payload: {
-            value: false,
-          }
-        });
+        
       }
+      dispatch({
+        type: 'TOGGLE_LOADER_SEARCHPAGE',
+        payload: {
+          value: false,
+        }
+      });
     }
     
   },[dispatch]);

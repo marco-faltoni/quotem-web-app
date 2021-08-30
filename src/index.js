@@ -12,8 +12,8 @@ import thunk from 'redux-thunk';
 
 const composeEnancher = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  rootReducers, 
-  composeEnancher(applyMiddleware(thunk))
+  rootReducers,
+  composeEnancher(applyMiddleware(thunk)),
 );
 
 ReactDOM.render(

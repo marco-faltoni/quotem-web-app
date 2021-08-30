@@ -1,4 +1,4 @@
-.wrapper-home, .wrapper-searchpage{
+.wrapper-home, .wrapper-searchpage, .wrapper-bookmarks{
   width: 100%;
   position: relative;
   overflow-x: hidden;
@@ -95,6 +95,9 @@
           padding-top: 15rem;
         }
         
+      }
+      &.bookmarks {
+        padding: 11rem 3rem !important;
       }
       &.quote, &.results {
         border-left: 0.5px solid #bfbfbf40;

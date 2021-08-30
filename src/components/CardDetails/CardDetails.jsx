@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 // Redux
 import { useSelector, useDispatch} from 'react-redux';
 import {CloseIcon} from '../../style/Icon';
@@ -7,8 +7,17 @@ const CardDetails = (props) => {
   // getting back the data from redux
   const {poems, quotes, menu} = useSelector((store) => store);
   const arrayLenght = poems.selectedPoem.length;
+  const [local, setLocal] = useState();
   const dispatch = useDispatch();
   const { randomPoems, randomQuotes } = props;
+  
+
+  useEffect(() => {
+    const data = localStorage.getItem('QuotemLocalStorage')
+    if(data){
+      setLocal(JSON.parse(data))
+    }
+  }, []);
 
   const exitHandler = () => {
     document.body.style.overflow = 'auto';
@@ -18,6 +27,33 @@ const CardDetails = (props) => {
         value: !menu.showCard,
       }
     });
+  };
+
+  const saveToLocalHandle = (tit, aut, cont, id) => {
+    let store = JSON.parse(localStorage.getItem("QuotemLocalStorage"));
+    let savedItem = {
+      title: tit,
+      author: aut,
+      content: cont,
+      uniqueID: id ? id : tit
+    }
+    // console.log(cart);
+    let isInCart = false;
+    if (store) {
+      isInCart = store.some(item => item.uniqueID === (id ? id : tit));
+    } else {
+      store = [];
+    }
+    console.log(isInCart);
+    if (!isInCart) {
+      store.push(savedItem);
+      alert(`saved ${id ? "quote" : "poem"}!`)
+    } else {
+      alert(`${id ? "quote" : "poem"} already saved!`)
+    }
+    localStorage.setItem('QuotemLocalStorage', JSON.stringify(store));
+    // setLocal(store)
+    exitHandler();
   };
 
   return (
@@ -32,7 +68,9 @@ const CardDetails = (props) => {
                     <h3>{item.title}</h3>
                     <h4>{item.author}</h4>
                   </div>
-                  <h5>add to your bookmarks</h5>
+                  <h5 onClick={() => saveToLocalHandle(item.title, item.author, item.lines)}>
+                    add to your bookmarks
+                  </h5>
                 </div>
                 <div className="card-content">
                   <h5>
@@ -70,7 +108,7 @@ const CardDetails = (props) => {
                     })}
                     <h4>{item.author}</h4>
                   </div>
-                  <h5>add to your bookmarks</h5>
+                  <h5 onClick={() => saveToLocalHandle(item.tags, item.author, item.content, item._id)}>add to your bookmarks</h5>
                 </div>
                 <div className="card-content">
                   <h5 className="card-quote">

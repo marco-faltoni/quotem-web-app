@@ -5,6 +5,7 @@
 @import "./landingHome";
 @import "./searchPage";
 @import "./resultsPage";
+@import "./bookmarksPage";
 
 // general rules
 * {
@@ -29,6 +30,19 @@ html {
 }
 .wrapper-cards::-webkit-scrollbar-track {
   background: $white;
+}
+
+.wrapper-cards.bookmarks-poem::-webkit-scrollbar {
+  width: 0.3vw;
+}
+.wrapper-cards.bookmarks-poem::-webkit-scrollbar-thumb {
+  background-color: #7ca7b57a;
+}
+.wrapper-cards.bookmarks-poem::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(187, 187, 187);
+}
+.wrapper-cards.bookmarks-poem::-webkit-scrollbar-track {
+  background: #ffffff;
 }
 
 .card-content::-webkit-scrollbar {
