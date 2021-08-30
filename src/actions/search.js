@@ -52,6 +52,12 @@ export const fetchSearch = (type, text, val) => async (dispatch) => {
             value: true,
           }
         });
+        dispatch({
+          type: 'TOGGLE_LOADER_SEARCHPAGE',
+          payload: {
+            value: false,
+          }
+        });
       } else {
         dispatch({
           type: 'FETCH_SEARCHED_POEMS',
@@ -65,6 +71,12 @@ export const fetchSearch = (type, text, val) => async (dispatch) => {
             value: text,
           }
         })
+        dispatch({
+          type: 'TOGGLE_LOADER_SEARCHPAGE',
+          payload: {
+            value: false,
+          }
+        }); 
       }
 
     } else {
@@ -73,6 +85,12 @@ export const fetchSearch = (type, text, val) => async (dispatch) => {
           type: 'TOGGLE_RESULTS',
           payload: {
             value: true,
+          }
+        });
+        dispatch({
+          type: 'TOGGLE_LOADER_SEARCHPAGE',
+          payload: {
+            value: false,
           }
         });
       } else {  
@@ -88,6 +106,12 @@ export const fetchSearch = (type, text, val) => async (dispatch) => {
             value: text,
           }
         })
+        dispatch({
+          type: 'TOGGLE_LOADER_SEARCHPAGE',
+          payload: {
+            value: false,
+          }
+        }); 
       }
     }
     
@@ -168,6 +192,18 @@ export const fetchAuhtorClicked = (type, val) => async (dispatch) => {
         value: val,
       }
     })
+    dispatch({
+      type: 'TOGGLE_LOADER_SEARCHPAGE',
+      payload: {
+        value: false,
+      }
+    });
+    dispatch({
+      type: 'TOGGLE_RESULTS',
+      payload: {
+        value: false,
+      }
+    });
   } catch (e) {
     console.log("fetchData error:", e);
   }

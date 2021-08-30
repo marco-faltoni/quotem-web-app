@@ -1,6 +1,7 @@
 @import "./var";
 @import "./mixins";
 @import "./nav";
+@import "./loader";
 @import "./landingHome";
 @import "./searchPage";
 @import "./resultsPage";
@@ -13,7 +14,7 @@
 }
 
 html {
-  scrollbar-width: normal;
+  scrollbar-width: thin;
   scrollbar-color: $grey $white;
 }
 

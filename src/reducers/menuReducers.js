@@ -5,6 +5,7 @@ const initState = {
   showCard: false,
   valueSaved: null,
   noResults: false,
+  isLoading: true,
   list: [
     {
       text: "Poems",
@@ -29,6 +30,8 @@ const menuReducer = (state=initState, action) => {
       return {...state, showCard: action.payload.value};
     case "FETCH_VALUE_SEARCHED":
       return {...state, valueSaved: action.payload.value};
+    case "TOGGLE_LOADER_SEARCHPAGE":
+      return {...state, isLoading: action.payload.value};
     case "TOGGLE_RESULTS":
       return {...state, noResults: action.payload.value};
     default:

@@ -9,12 +9,14 @@
         padding-top: 10rem;
       }
       .wrapper-cards {
-        max-height: 90%;
+        height: 88%;
         width: 100%;
         overflow-y: scroll;
         display: initial;
         padding: 0rem 1rem;
         @include respond-to('largeTabletUp') {
+          height: unset;
+          max-height: 90%;
           display: grid;
           grid-gap: 1rem 1rem;
           grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
@@ -26,6 +28,7 @@
           cursor: pointer;
           font-style: italic;
           font-weight: 600;
+          color: #7ca7b5d9;
         }
         .card-wrapper {
           height: 90%;

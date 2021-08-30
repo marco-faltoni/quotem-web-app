@@ -42,7 +42,12 @@ const SearchInput = (props) => {
     if (textInput === "") {
       alert('Write something!')
     } else { 
-      
+      dispatch({
+        type: 'TOGGLE_LOADER_SEARCHPAGE',
+        payload: {
+          value: true,
+        }
+      });
       if (poemInput) {
         dispatch(fetchSearch("poem", textInput, valueInput));
       } else if (quoteInput){
@@ -51,7 +56,7 @@ const SearchInput = (props) => {
           console.log(textInput);
         }
         dispatch(fetchSearch("quote", textInput, valueInput));
-      }  
+      }
     }
     setTextInput('');
   }

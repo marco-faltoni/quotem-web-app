@@ -60,10 +60,11 @@ const CardDetails = (props) => {
                     {item.tags?.map((tag, index)=> {
                       const tagsLength = item.tags.length;
                       return (
-                        !tagsLength > 1 ? (
-                          <h3 className={index === 0 ? "first" : ""} key={index}>{tag}{index === 0 ? ", " : ""}</h3>
+                        tagsLength <= 1 ? (
+                          <h3 key={index}>{tag.replace(/-/g," ")}</h3>
+                          
                         ) : (
-                          <h3 key={index}>{tag}</h3>
+                          <h3 className={index === 0 ? "first" : ""} key={index}>{tag.replace(/-/g," ")}{index === 0 ? ", " : ""}</h3>
                         )
                       )
                     })}

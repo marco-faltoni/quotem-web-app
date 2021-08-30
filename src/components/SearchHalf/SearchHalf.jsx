@@ -3,6 +3,7 @@ import React, {useEffect} from "react";
 import SearchInput from '../SearchInput/SearchInput';
 import Suggests from '../Suggests/Suggests';
 import Card from '../Card/Card';
+import Loader from '../Loader';
 // Redux
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchRandomList} from '../../actions/search';
@@ -20,10 +21,22 @@ const SearchHalf = (props) => {
     if (results && variants === "poems") {
       if (poemsRandomEmpty === 0) {
         dispatch(fetchRandomList("poem"));
+        dispatch({
+          type: 'TOGGLE_LOADER_SEARCHPAGE',
+          payload: {
+            value: false,
+          }
+        });
       }
     }else if (results && variants === "quote") {
       if (quotesRandomEmpty === 0) {
         dispatch(fetchRandomList("quote"));
+        dispatch({
+          type: 'TOGGLE_LOADER_SEARCHPAGE',
+          payload: {
+            value: false,
+          }
+        });
       }
     }
     
@@ -48,9 +61,18 @@ const SearchHalf = (props) => {
               menu.valueSaved !== null ? menu.valueSaved : "Random"
             )}
           </h2>
-          <div className="wrapper-cards">
-            {variants === "poems" ? <Card randomPoems /> : <Card randomQuotes />}
-          </div>
+          {menu.isLoading ? (
+            <div className="loading-results">
+              <div className="ld-wrap">
+                <Loader />
+              </div>
+            </div>
+          ) : ( 
+            <div className="wrapper-cards">
+              {variants === "poems" ? <Card randomPoems /> : <Card randomQuotes />}
+            </div>
+          )}
+
           
         </>
       )}

@@ -13,19 +13,22 @@ const initState = {
       checked: false,
     }
   ],
-  valueInput: "author"
+  valueInput: "author",
+  isLoading: true
 }
 
 const quotesReducer = (state=initState, action) => {
   switch(action.type){
     case "FETCH_RANDOM_QUOTES":
-      return {...state, randomQuotes: action.payload.randomQuotes};
+      return {...state, randomQuotes: action.payload.randomQuotes, isLoading: false};
     case "FETCH_SEARCHED_QUOTES":
       return {...state, searched: action.payload.randomList};
     case "FETCH_AUTHOR_QUOTES":
       return {...state, authorList: action.payload.authorQuotes};
-      case "FETCH_SELECTED_QUOTE":
+    case "FETCH_SELECTED_QUOTE":
         return {...state, selectedQuote: [action.payload.value]};
+    case "TOGGLE_LOADER_QUOTE":
+      return {...state, isLoading: true};
     case "TOGGLE_RADIO_QUOTES":
       return {
         ...state, 

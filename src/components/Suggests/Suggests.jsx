@@ -18,9 +18,21 @@ const Suggests = (props) => {
   useEffect(()=> {
     if (poemSuggests) {
       if (poemsAuthorsEmpty === 0) {
+        dispatch({
+          type: 'TOGGLE_LOADER_SEARCHPAGE',
+          payload: {
+            value: true,
+          }
+        });
         dispatch(fetchAuthors("poem"));
       }
     }else if (quoteSuggests) {
+      dispatch({
+        type: 'TOGGLE_LOADER_SEARCHPAGE',
+        payload: {
+          value: true,
+        }
+      });
       if (quotesAuthorsEmpty === 0) {
         dispatch(fetchAuthors("quote"));
       }

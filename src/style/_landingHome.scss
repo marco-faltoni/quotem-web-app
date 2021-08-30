@@ -31,7 +31,23 @@
         min-height: 100vh;
         padding: 0 3rem;
       }
+      .ld-wrap {
+        position: relative;
+        min-height: 10rem;
+      }
+      .load-wr  {
+        width: 100%;
+        @include respond-to('largeTabletUp') {
+          width: unset;
+        }
+        .ld-wrap {
+          width: 100%;
+          @include respond-to('largeTabletUp') {
+            width: 45rem;
+          }
+        }
 
+      }
       h2 {
         line-height: 1;
         padding-bottom: 1rem;
@@ -213,8 +229,14 @@
         align-items: center;
         width: 25%;
         cursor: pointer;
+        &:hover {
+          .container {
+            transform: scaleX(1.8);
+          }
+        }
         .container {
           height: 2rem;
+          transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
           @include respond-to('largeTabletUp') {
             height: 3rem;
           }
@@ -229,6 +251,8 @@
           font-size: 16px;
           font-family: "Cormorant", serif;
           text-transform: uppercase;
+          z-index: 1;
+          transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
           @include respond-to('largeTabletUp') {
             padding-left: 9rem;
             font-size: 21px;
@@ -280,8 +304,17 @@
         width: 25%;
         cursor: pointer;
         z-index: 3;
+        &:hover {
+          .container {
+            transform: scaleX(1.8);
+          }
+          h5 {
+            transform: scale(1.1);
+          }
+        }
         .container {
           height: 1rem;
+          transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
           @include respond-to('largeTabletUp') {
             height: 1.5rem;
           }
@@ -293,6 +326,7 @@
           font-size: 14px;
           font-family: "Cormorant", serif;
           font-style: italic;
+          transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
           @include respond-to('largeTabletUp') {
             padding-right: 9rem;
             font-size: 20px;
@@ -332,6 +366,7 @@
           h5 {
             padding-left: 1rem;
             padding-right: 0;
+            z-index: 1;
             @include respond-to('largeTabletUp') {
               padding-left: 9rem;
             }
