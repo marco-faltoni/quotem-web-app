@@ -17,7 +17,8 @@ const initState = {
       checked: false,
     },
   ],
-  valueInput: "author"
+  valueInput: "author",
+  
 }
 
 const poemsReducer = (state=initState, action) => {

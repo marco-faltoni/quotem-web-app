@@ -9,10 +9,10 @@ import {fetchRandomList} from '../../actions/search';
 
 const SearchHalf = (props) => {
   // getting back the data from redux
-  const {poems, quotes} = useSelector((store) => store);
+  const {poems, quotes, menu} = useSelector((store) => store);
   const { variants, search, results } = props;
-  const poemsRandomEmpty = poems.searched.length;
-  const quotesRandomEmpty = quotes.searched.length;
+  const poemsRandomEmpty = poems.searched?.length;
+  const quotesRandomEmpty = quotes.searched?.length;
 
   // fecth authors
   const dispatch = useDispatch();
@@ -41,7 +41,13 @@ const SearchHalf = (props) => {
       )}
       {results && (
         <>
-          <h2 className="big-tl sr qt">Random</h2>
+          <h2 className="big-tl sr qt">
+            {menu.noResults ? (
+              "No Results"
+            ): (
+              menu.valueSaved !== null ? menu.valueSaved : "Random"
+            )}
+          </h2>
           <div className="wrapper-cards">
             {variants === "poems" ? <Card randomPoems /> : <Card randomQuotes />}
           </div>

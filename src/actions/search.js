@@ -41,21 +41,54 @@ export const fetchSearch = (type, text, val) => async (dispatch) => {
   try {
     const resFetch = await axios.get(fetchURL);
     console.log(resFetch);
+
+
     
     if (type === "poem") {
-      dispatch({
-        type: 'FETCH_SEARCHED_POEMS',
-        payload: {
-          randomList: resFetch.data,
-        }
-      })
+      if (resFetch.data.reason) {
+        dispatch({
+          type: 'TOGGLE_RESULTS',
+          payload: {
+            value: true,
+          }
+        });
+      } else {
+        dispatch({
+          type: 'FETCH_SEARCHED_POEMS',
+          payload: {
+            randomList: resFetch.data,
+          }
+        })
+        dispatch({
+          type: 'FETCH_VALUE_SEARCHED',
+          payload: {
+            value: text,
+          }
+        })
+      }
+
     } else {
-      dispatch({
-        type: 'FETCH_SEARCHED_QUOTES',
-        payload: {
-          randomList: resFetch.data.results,
-        }
-      })
+      if (resFetch.data.count === 0) {
+        dispatch({
+          type: 'TOGGLE_RESULTS',
+          payload: {
+            value: true,
+          }
+        });
+      } else {  
+        dispatch({
+          type: 'FETCH_SEARCHED_QUOTES',
+          payload: {
+            randomList: resFetch.data.results,
+          }
+        })
+        dispatch({
+          type: 'FETCH_VALUE_SEARCHED',
+          payload: {
+            value: text,
+          }
+        })
+      }
     }
     
   } catch (e) {
@@ -76,7 +109,7 @@ export const fetchRandomList = (type, val) => async (dispatch) => {
     const resFetch = await axios.get(fetchURL);
     // console.log(resFetch);
     // let resFiltered;
-    console.log(resFetch.data);
+    // console.log(resFetch.data);
 
     if (type === "poem") {
       dispatch({
@@ -93,7 +126,48 @@ export const fetchRandomList = (type, val) => async (dispatch) => {
         }
       })
     }
+
     
+  } catch (e) {
+    console.log("fetchData error:", e);
+  }
+}
+
+export const fetchAuhtorClicked = (type, val) => async (dispatch) => {
+  const authorQuoteRL = QuotesEndPoint+"author=";
+  let fetchURL;
+  if (type === "poem") {
+    fetchURL = poemAuthorsURL+`/${val}`;
+  } else {
+    fetchURL = authorQuoteRL+val;
+  }
+  
+  try {
+    const resFetch = await axios.get(fetchURL);
+    // console.log(resFetch);
+    let resFiltered;
+
+    if (type === "poem") {
+      dispatch({
+        type: 'FETCH_SEARCHED_POEMS',
+        payload: {
+          randomList: resFetch.data,
+        }
+      })
+    } else {
+      dispatch({
+        type: 'FETCH_SEARCHED_QUOTES',
+        payload: {
+          randomList: resFetch.data.results,
+        }
+      })
+    }
+    dispatch({
+      type: 'FETCH_VALUE_SEARCHED',
+      payload: {
+        value: val,
+      }
+    })
   } catch (e) {
     console.log("fetchData error:", e);
   }

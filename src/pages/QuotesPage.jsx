@@ -2,18 +2,17 @@ import React from "react";
 // import components
 import SearchHalf from '../components/SearchHalf/SearchHalf';
 import CardDetails from '../components/CardDetails/CardDetails';
-// import {HamburgerMenu} from '../style/Icon';
 // Redux
-// import {useDispatch, useSelector} from 'react-redux';
-// actions
-// import {fetchAdvice, fetchPoemAndQuote} from '../actions/index';
+import { useSelector} from 'react-redux';
+
 
 
 const QuotesPage = () => {
-
+  // getting back the data from redux
+  const {menu} = useSelector((store) => store);
   return (
     <div className="wrapper-searchpage">
-      <div className="wrapper-qp">
+      <div className={`wrapper-qp searchpage ${menu.showCard ? "blur" : ""}`}>
         <SearchHalf search variants={"quote"}/>
         <SearchHalf results variants={"quote"}/>
       </div>

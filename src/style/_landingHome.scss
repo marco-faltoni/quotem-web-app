@@ -178,9 +178,11 @@
         }
       }
       .big-tl.sr {
-        font-size: 3rem;
+        font-size: 2rem;
+        right: 10%;
         @include respond-to('largeTabletUp') {
           font-size: 7rem;
+          right: -2%;
         }
         @include respond-to('desktopBigUp') {
           font-size: 9rem;

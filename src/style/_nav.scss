@@ -1,6 +1,7 @@
 
 .wrap-nav {
   .header {
+    transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
     position: fixed;
     top: 2%;
     left: 50%;
@@ -22,7 +23,10 @@
       justify-self: flex-end;
       cursor: pointer;
     }
-  
+    &.blur {
+      filter: blur(3px);
+      pointer-events: none;
+    }
   }
   .menu {
     position: fixed;

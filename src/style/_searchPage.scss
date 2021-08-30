@@ -171,43 +171,110 @@
   }
   .searchpage.blur {
     filter: blur(3px);
+    pointer-events: none;
   }
   .wrap-card-detail {
     position: fixed;
-    top: 25%;
-    left: 30%;
-    transform: translateY(300%);
-    z-index: 100;
-    background-color: white;
-    box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
-    -webkit-box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
-    border: 1px solid #dbdbdb;
-    min-height: 20rem;
-    max-width: 50vw;
-    transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: all .3s cubic-bezier(0.215, 0.61, 0.355, 1) ;
     &.show {
-      transform: translateY(0%);
+      z-index: 100;
+    }
+    .wrap-animation {
+      transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+      transform: translateY(500%);
+      background-color: white;
+      height: 50vh;
+      width: 90vw;
+      box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
+      -webkit-box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
+      border: 1px solid #dbdbdb;
+      &.show {
+        transform: translateY(0%);
+      }
+      @include respond-to('largeTabletUp') {
+        height: 35rem;
+        width: 60rem;
+      }
     }
     .card-wrapper.detail {
       display: flex;
       justify-content: space-between;
-      
+      flex-direction: column;
+      height: 100%;
+      @include respond-to('largeTabletUp') {
+        flex-direction: row;
+      }
       .card-info {
-        width: 40%;
-        min-height: 20rem;
-        padding: 2rem;
+        width: 100%;
+        padding: 1rem;
+        height: 40%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         background-color: $grey;
-        h3 {
-          font-family: $titles;
-          font-size: 30px;
+        @include respond-to('largeTabletUp') {
+          width: 40%;
+          height: 100%;
+          padding: 2rem;
         }
+        .card-info-titles {
+          height: 80%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          @include respond-to('largeTabletUp') {
+            height: 50%;
+            justify-content: flex-end;
+          }
+          h3 {
+            font-family: $titles;
+            font-size: 26px;
+            @include respond-to('largeTabletUp') {
+              font-size: 30px;
+            }
+          }
+        }
+
       }
       .card-content {
-        width: 60%;
-        padding: 2rem;
+        width: 100%;
+        padding: 1rem;
+        height: 60%;
+        overflow-y: hidden;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include respond-to('largeTabletUp') {
+          width: 60%;
+          padding: 2rem 3rem;
+          height:initial;
+        }
+        h5 {
+          height: 100%;
+          overflow-y: auto;
+          font-weight: 200;
+          font-size: 13px;
+          &.card-quote {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+          @include respond-to('largeTabletUp') {
+            font-size: 18px;
+          }
+          @include respond-to('desktopSmallUp') {
+            font-size: 21px;
+          }
+          @include respond-to('desktopBigUp') {
+            font-size: 24px;
+          }
+        }
       }
     }
     .close-card {

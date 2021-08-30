@@ -18,7 +18,7 @@ const MenuNav = (props) => {
 
   return (
     <div className="wrap-nav">
-      <div className="header">
+      <div className={`header ${menu.showCard ? "blur" : ""}`}>
         <span></span>
         <Link to={`/`} >
           <h1>Quotem</h1>

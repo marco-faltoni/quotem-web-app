@@ -3,6 +3,8 @@ const initState = {
   title: "Quotem Menu",
   logo: "Q",
   showCard: false,
+  valueSaved: null,
+  noResults: false,
   list: [
     {
       text: "Poems",
@@ -25,6 +27,10 @@ const menuReducer = (state=initState, action) => {
       return {...state, isOpen: action.payload.isOpen};
     case "TOGGLE_CARD":
       return {...state, showCard: action.payload.value};
+    case "FETCH_VALUE_SEARCHED":
+      return {...state, valueSaved: action.payload.value};
+    case "TOGGLE_RESULTS":
+      return {...state, noResults: action.payload.value};
     default:
       return {...state};
   }

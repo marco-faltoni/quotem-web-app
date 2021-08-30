@@ -2,18 +2,35 @@
   .wrapper-qp {
     .wrapper-half.results {
       max-height: 100vh;
-      padding-bottom: 10rem;
-      padding-top: 10rem;
+      padding-bottom: 0rem;
+      padding-top: 6rem;
+      @include respond-to('largeTabletUp') {
+        padding-bottom: 10rem;
+        padding-top: 10rem;
+      }
       .wrapper-cards {
         max-height: 90%;
         width: 100%;
         overflow-y: scroll;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-        grid-gap: 1rem 1rem;
+        display: initial;
         padding: 0rem 1rem;
+        @include respond-to('largeTabletUp') {
+          display: grid;
+          grid-gap: 1rem 1rem;
+          grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+        }
+        @include respond-to('desktopBigUp') {
+          grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        }
+        .go-back {
+          cursor: pointer;
+          font-style: italic;
+          font-weight: 600;
+        }
         .card-wrapper {
-          height: 25rem;
+          height: 90%;
+          width: 98%;
+          margin: 0 auto;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -21,6 +38,14 @@
           -webkit-box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
           cursor: pointer;
           border: 1px solid #dbdbdb;
+          @include respond-to('largeTabletUp') {
+            margin: unset;
+            height: 18rem;
+            width: unset;
+          }
+          @include respond-to('desktopBigUp') {
+            height: 25rem;
+          }
           .card-info, .card-content {
             height: 50%;
             padding: 1rem;
@@ -51,8 +76,21 @@
               font-weight: 300;
             }
             h5 span {
-              font-size: 16px;
+              font-size: 14px;
+              @include respond-to('desktopBigUp') {
+                font-size: 16px;
+              }
             }
+          }
+        }
+        .mySwiper {
+          height: 100%;
+          width: 100%;
+          .swiper-pagination-bullets-dynamic {
+            bottom: 0;
+          }
+          .swiper-pagination-bullet-active-main {
+            background-color: #55acf3;
           }
         }
       }

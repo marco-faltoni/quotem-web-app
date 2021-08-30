@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 // Redux
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchAuthors} from '../../actions/search';
+import {fetchAuthors, fetchAuhtorClicked,} from '../../actions/search';
 
 const Suggests = (props) => {
   // getting back the data from redux
@@ -10,8 +10,11 @@ const Suggests = (props) => {
   const poemsAuthorsEmpty = poems.authorList.length;
   const quotesAuthorsEmpty = quotes.authorList.length;
 
-  // fecth authors
   const dispatch = useDispatch();
+  const handleAuthor = (type, val) => {
+    dispatch(fetchAuhtorClicked(type, val))
+  };
+
   useEffect(()=> {
     if (poemSuggests) {
       if (poemsAuthorsEmpty === 0) {
@@ -32,7 +35,7 @@ const Suggests = (props) => {
         {poemSuggests && (
           poems.authorList?.map((aut, index)=> {
             return (
-              <h4 key={index}>
+              <h4 key={index} onClick={() => handleAuthor("poem", aut)}>
                 {aut}
               </h4>
             )
@@ -41,7 +44,7 @@ const Suggests = (props) => {
         {quoteSuggests && (
           quotes.authorList?.map((aut, index)=> {
             return(
-              <h4 key={index}>
+              <h4 key={index} onClick={() => handleAuthor("quote", aut.name)}>
                 {aut.name}
               </h4>
             )
