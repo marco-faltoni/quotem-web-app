@@ -60,7 +60,7 @@
               padding-top: 0;
               font-family: $titles;
               font-size: 20px;
-
+              padding-bottom: 0;
             }
             h4 {
               font-size: 16px;
@@ -72,11 +72,14 @@
               overflow: hidden;
               max-height: 100%;
               display: -webkit-box;
-              -webkit-line-clamp: 6;
+              -webkit-line-clamp: 3;
               -webkit-box-orient: vertical;
               text-overflow: ellipsis;
               font-size: 16px;
               font-weight: 300;
+              @include respond-to('largeTabletUp') {
+                -webkit-line-clamp: 6;
+              }
             }
             h5 span {
               font-size: 14px;
