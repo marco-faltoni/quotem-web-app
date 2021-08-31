@@ -2,8 +2,21 @@ import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import {HamburgerMenu, CloseIcon} from '../style/Icon';
 import {Link} from 'react-router-dom';
+import { motion } from "framer-motion";
 
 const MenuNav = (props) => {
+  const slideDown = {
+    hidden: { opacity: 0, y: -100, x: "-50%"},
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: "-50%",
+      transition: {
+        delay: 2.2,
+        duration: 1.8
+      }
+    }
+  }
 
   // getting back the data from redux
   const {menu} = useSelector((store) => store);
@@ -18,14 +31,14 @@ const MenuNav = (props) => {
 
   return (
     <div className="wrap-nav">
-      <div className={`header ${menu.showCard ? "blur" : ""}`}>
+      <motion.div variants={slideDown} initial="hidden" animate="visible" className={`header ${menu.showCard ? "blur" : ""}`}>
         <span></span>
         <Link to={`/`} >
           <h1>Quotem</h1>
         </Link>
         <HamburgerMenu onClick={() => toggle()} />
 
-      </div>
+      </motion.div>
       <div className={`menu ${menu.isOpen ? 'show' : ""} `}>
         <div className="wrap-text">
           <Link to={`/`} >

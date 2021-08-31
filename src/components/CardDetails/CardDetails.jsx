@@ -47,7 +47,7 @@ const CardDetails = (props) => {
     // console.log(isInCart);
     if (!isInCart) {
       store.push(savedItem);
-      alert(`saved ${id ? "quote" : "poem"}!`)
+      alert(`${id ? "quote" : "poem"} saved!`)
     } else {
       alert(`${id ? "quote" : "poem"} already saved!`)
     }
@@ -146,7 +146,7 @@ const CardDetails = (props) => {
                       <h4>{item.author}</h4>
                     </div>
                     <h5 onClick={() => removeToLocalHandle(item.uniqueID, "poem")} >
-                      remove to your bookmarks
+                      remove from your bookmarks
                     </h5>
                   </div>
                   <div className="card-content">
@@ -184,7 +184,7 @@ const CardDetails = (props) => {
                       })}
                       <h4>{item.author}</h4>
                     </div>
-                    <h5 onClick={() => removeToLocalHandle(item.uniqueID, "quote")}>remove to your bookmarks</h5>
+                    <h5 onClick={() => removeToLocalHandle(item.uniqueID, "quote")}>remove from your bookmarks</h5>
                   </div>
                   <div className="card-content">
                     <h5 className="card-quote">

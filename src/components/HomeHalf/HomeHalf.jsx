@@ -5,9 +5,10 @@ import Loader from '../Loader';
 // actions
 import {fetchPoem, fetchQuote} from '../../actions/index';
 import {Link} from 'react-router-dom';
+import { motion } from "framer-motion";
+import { sentece, senteceT, letter, letterT, opacity, opacityFast, slideToRight, slideToLeftBig, slideToLeft } from "./animation";
 
 const HomeHalf = (props) => {
-
   // getting back the data from redux
   const {poems, quotes} = useSelector((store) => store);
   const { variants } = props;
@@ -27,90 +28,163 @@ const HomeHalf = (props) => {
 		<div className={`${variants === "poems" ? "poem" : "quote"} wrapper-half`}>
       {variants === "poems" && (
         <>
-          <h2 className="big-tl pm">Poem</h2>
-          <div className="reload-page pm" onClick={() => reloadData("poem")}>
-            <div className="container"></div>
-            <h5>Get a new Poems</h5>
-          </div>
+          <motion.h2 variants={slideToRight} initial="hidden" animate="visible" className="big-tl pm">Poem</motion.h2>
+          <motion.div variants={senteceT} initial="hidden" animate="visible"  className="reload-page pm" onClick={() => reloadData("poem")}>
+            <motion.div variants={slideToLeft} initial="hidden" animate="visible" className="container"></motion.div>
+            <motion.h5 variants={letterT} initial="hidden" animate="visible">Get a new Poems</motion.h5>
+          </motion.div>
           {poems.isLoading ? (
-            <div className="ld-wrap">
+            <motion.div variants={opacityFast} initial="hidden" animate="visible"  className="ld-wrap">
               <Loader />
-            </div>
+            </motion.div>
           ) : (
             randomPoem.map((poem, index)=> {
               return (
                 <div className="poem-wrap" key={`wrap-${index}`}>
-                  <h3 className="poetry-text">
+                  <motion.h3 
+                    className="poetry-text"
+                    variants={sentece}
+                    initial="hidden"
+                    animate="visible"
+                  >
                     {poem.lines.map((line, index)=> {
                       return (
                         <React.Fragment key={index}>
-                          <span>{line}</span>
+                          <motion.span
+                          variants={letter}
+                          >
+                            {line}
+                          </motion.span>
                           <br />
                         </React.Fragment>
                       )
                     })}
-                  </h3>
-                  <h2>{poem.title}</h2>
-                  <div className="author-wrap">
-                    <h4>{poem.author}</h4>
-                    <Arrow />
-                  </div>
+                  </motion.h3>
+                  <motion.h2
+                    variants={letter}
+                    initial="hidden"
+                    animate="visible"
+                    id="title-home"
+                  >
+                    {poem.title}
+                  </motion.h2>
+                  <motion.div 
+                    className="author-wrap"
+                    variants={sentece}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    <motion.h4
+                      variants={letter}
+                      initial="hidden"
+                      animate="visible"
+                    >
+                      {poem.author}
+                    </motion.h4>
+                    <motion.div
+                      variants={opacity} initial="hidden" animate="visible"
+                    >
+                      <Arrow />
+                    </motion.div>
+                    
+                  </motion.div>
                   
                 </div>
               )
             })
           )}
           
-          <div className="change-page pm">
-            <div className="container"></div>
+          <motion.div 
+            className="change-page pm"
+            variants={senteceT}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div 
+              className="container"
+              variants={slideToRight} 
+              initial="hidden"
+              animate="visible"
+            ></motion.div>
             <Link to={`/poems`} >
-              <h5>Go to Poems</h5>
+              <motion.h5
+                variants={letterT}
+                initial="hidden"
+                animate="visible"
+                
+              >Go to Poems
+              </motion.h5>
             </Link>
-          </div>
+          </motion.div>
         </>
         
       )}  
       {variants === "quote" && (
         <>
-          <h2 className="big-tl qt">Quote</h2>
-          <div className={`quote-wrap ${quotes.isLoading ? "load-wr" : ""}`}>
+          <motion.h2 variants={slideToLeftBig} initial="hidden" animate="visible" className="big-tl qt">Quote</motion.h2>
+          <motion.div 
+            className={`quote-wrap ${quotes.isLoading ? "load-wr" : ""}`}
+            variants={sentece}
+            initial="hidden"
+            animate="visible"
+          >
             {quotes.isLoading ? (
-              <div className="ld-wrap">
+              <motion.div variants={opacityFast} initial="hidden" animate="visible"  className="ld-wrap">
                 <Loader />
-              </div>
+              </motion.div>
             ) : (
               <>
-              <div className="author-wrap">
-                <h4>{randomQuote.author}</h4>
-                <Arrow />
-              </div>
+              <motion.div 
+                className="author-wrap"
+                variants={sentece}
+                initial="hidden"
+                animate="visible"
+              >
+                <motion.h4
+                  variants={letter}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {randomQuote.author}
+                </motion.h4>
+                <motion.div
+                  variants={opacity} initial="hidden" animate="visible"
+                >
+                  <Arrow />
+                </motion.div>
+              </motion.div>
               <div>
                 {randomQuote.tags?.map((tag, index)=> {
                   const tagsLength = randomQuote.tags.length;
                   return (
                     tagsLength <= 1 ? (
-                      <h2 key={index}>{tag.replace(/-/g," ")}</h2>
+                      <motion.h2 variants={letter} initial="hidden" animate="visible" key={index}>{tag.replace(/-/g," ")}</motion.h2>
                       
                     ) : (
-                      <h2 className={index === 0 ? "first" : ""} key={index}>{tag.replace(/-/g," ")}{index === 0 ? ", " : ""}</h2>
+                      <motion.h2 variants={letter} initial="hidden" animate="visible" className={index === 0 ? "first" : ""} key={index}>{tag.replace(/-/g," ")}{index === 0 ? ", " : ""}</motion.h2>
                     )
                   )
                 })}
               </div>
-              <h3>
+              <motion.h3
+                className="poetry-text"
+                variants={letter}
+                initial="hidden"
+                animate="visible"
+              >
                 {randomQuote.content}
-              </h3>
+              </motion.h3>
               </>
             )}
-          </div>
-          <div className="reload-page qt" onClick={() => reloadData("quote")}>
-            <div className="container"></div>
-            <h5>Get a new Quote</h5>
-          </div>
+          </motion.div>
+          <motion.div variants={senteceT} initial="hidden" animate="visible"  className="reload-page qt" onClick={() => reloadData("quote")}>
+            <motion.div variants={slideToRight} initial="hidden" animate="visible" className="container"></motion.div>
+            <motion.h5 variants={letterT} initial="hidden" animate="visible" >Get a new Quote</motion.h5>
+          </motion.div>
           <div className="change-page qt">
-            <div className="container"></div>
+            <motion.div className="container"></motion.div>
             <Link to={`/quotes`} >
-              <h5>Go to Quotes</h5>
+              <motion.h5>Go to Quotes</motion.h5>
             </Link>
           </div>
         </>

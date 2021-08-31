@@ -45,6 +45,19 @@ html {
   background: #ffffff;
 }
 
+#title-home::-webkit-scrollbar {
+  width: 0.2vw;
+}
+#title-home::-webkit-scrollbar-thumb {
+  background-color: #7ca7b57a;
+}
+#title-home::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(187, 187, 187);
+}
+#title-home::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
 .card-content::-webkit-scrollbar {
   width: 0.3vw;
 }
