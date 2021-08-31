@@ -8,7 +8,17 @@
     .wrapper-half {
       max-height: 100vh;
       padding-bottom: 0rem;
-      
+      .no-results {
+        padding: 0;
+        z-index: 1;
+        .go-to {
+          cursor: pointer;
+          font-style: italic;
+          font-weight: 600;
+          color: #7ca7b5d9;
+        }
+      }
+
       &.poem {
         padding: 1rem 1rem;
       padding-top: 3rem;
@@ -57,12 +67,7 @@
         @include respond-to('desktopBigUp') {
           grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
         }
-        .go-back {
-          cursor: pointer;
-          font-style: italic;
-          font-weight: 600;
-          color: #7ca7b5d9;
-        }
+
         .card-wrapper {
           height: 90%;
           width: 98%;

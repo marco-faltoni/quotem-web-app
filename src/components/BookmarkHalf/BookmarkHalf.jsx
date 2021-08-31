@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {Link} from 'react-router-dom';
 // Redux
 import {useDispatch, useSelector} from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -193,7 +194,7 @@ const BookmarksHalf = (props) => {
           )
           
         ) : (
-          <h3>No Poems Saved. Go to <span>search page</span> and bookmark some poems.</h3>
+          <h3 className="no-results">No Poems Saved. Go to <Link to={`/poems`} ><span className="go-to">search page</span></Link> and bookmark some poems.</h3>
         )}
         </>
       )}
@@ -245,7 +246,7 @@ const BookmarksHalf = (props) => {
             </div>
           )
         ) : (
-          <h3>No Quote Saved. Go to <span>search page</span> and bookmark some quotes.</h3>
+          <h3 className="no-results">No Quote Saved. Go to <Link to={`/quotes`} ><span className="go-to">search page</span></Link> and bookmark some quotes.</h3>
         )}
         </>
       )}
