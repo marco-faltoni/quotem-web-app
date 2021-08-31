@@ -37,14 +37,17 @@ const BookmarksHalf = (props) => {
   let arrayPoems = [];
   let arrayQuotes = [];
 
-  name.filter((item) => {
-    if (Array.isArray(item.content) ) {
-      arrayPoems.push(item)
-    }
-    if (Array.isArray(item.title) ) {
-      arrayQuotes.push(item)
-    }
-  });
+  if (name !== "") {
+    name.filter((item) => {
+      if (Array.isArray(item.content) ) {
+        arrayPoems.push(item)
+      }
+      if (Array.isArray(item.title) ) {
+        arrayQuotes.push(item)
+      }
+    });
+  }
+
   // console.log(arrayQuotes);
 
   const loadDetailsHandler = (item) => {
