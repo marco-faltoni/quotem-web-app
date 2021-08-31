@@ -175,12 +175,15 @@
         }
       }
     }
-
   }
-  .searchpage.blur {
+  .searchpage.blur, .bookmarks.blur {
     filter: blur(3px);
     pointer-events: none;
   }
+  
+}
+
+.wrapper-searchpage, .wrapper-bookmarks {
   .wrap-card-detail {
     position: fixed;
     top: 50%;
@@ -235,8 +238,8 @@
           flex-direction: column;
           justify-content: flex-start;
           @include respond-to('largeTabletUp') {
-            height: 50%;
-            justify-content: flex-end;
+            height: 85%;
+            justify-content: center;
           }
           h3 {
             font-family: $titles;
@@ -275,7 +278,7 @@
             flex-direction: column;
             justify-content: center;
           }
-
+  
           @include respond-to('largeTabletUp') {
             font-size: 18px;
           }
@@ -297,5 +300,4 @@
       width: 18px;
     }
   }
-
 }

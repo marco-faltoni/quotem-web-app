@@ -9,7 +9,7 @@ const CardDetails = (props) => {
   const arrayLenght = poems.selectedPoem.length;
   const [local, setLocal] = useState();
   const dispatch = useDispatch();
-  const { randomPoems, randomQuotes } = props;
+  const { randomPoems, randomQuotes, bookmarks } = props;
   
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const CardDetails = (props) => {
     } else {
       store = [];
     }
-    console.log(isInCart);
+    // console.log(isInCart);
     if (!isInCart) {
       store.push(savedItem);
       alert(`saved ${id ? "quote" : "poem"}!`)
@@ -54,6 +54,21 @@ const CardDetails = (props) => {
     localStorage.setItem('QuotemLocalStorage', JSON.stringify(store));
     // setLocal(store)
     exitHandler();
+  };
+
+  const removeToLocalHandle = (id, val) => {
+    let store = JSON.parse(localStorage.getItem("QuotemLocalStorage"));
+    let filtered = [];
+    store.filter((item) => {
+      if (item.uniqueID !== id) {
+        filtered.push(item)
+      }
+    })
+    // console.log(filtered);
+    localStorage.setItem('QuotemLocalStorage', JSON.stringify(filtered));
+    alert("removed from your bookmarks!");
+    exitHandler();
+    window.location.reload();
   };
 
   return (
@@ -74,7 +89,7 @@ const CardDetails = (props) => {
                 </div>
                 <div className="card-content">
                   <h5>
-                    {item.lines.map((line, index)=> {
+                    {item.lines?.map((line, index)=> {
                       return (
                         <React.Fragment key={index}>
                           <span>{line}</span>
@@ -119,6 +134,68 @@ const CardDetails = (props) => {
               </div>
             )
           })
+        )}
+        {bookmarks && (
+          menu.isPoem ? (
+            poems.selectedPoem?.map((item, index)=> {
+              return (
+                <div key={index} className={`card-wrapper detail`}>
+                  <div className="card-info">
+                    <div className="card-info-titles">
+                      <h3>{item.title}</h3>
+                      <h4>{item.author}</h4>
+                    </div>
+                    <h5 onClick={() => removeToLocalHandle(item.uniqueID, "poem")} >
+                      remove to your bookmarks
+                    </h5>
+                  </div>
+                  <div className="card-content">
+                    <h5>
+                      {item.content?.map((line, index)=> {
+                        return (
+                          <React.Fragment key={index}>
+                            <span>{line}</span>
+                            <br />
+                          </React.Fragment>
+                        )
+                      })}
+                    </h5>
+                  </div>
+                  <CloseIcon className="close-card" onClick={() => exitHandler()} width="11" height="11" />
+                </div>
+              )
+            })
+          ) : (
+            quotes.selectedQuote?.map((item, index)=> {
+              return (
+                <div key={index} className="card-wrapper detail">
+                  <div className="card-info">
+                    <div className="card-info-titles">
+                      {item.title?.map((tag, index)=> {
+                        const tagsLength = item.title.length;
+                        return (
+                          tagsLength <= 1 ? (
+                            <h3 key={index}>{tag.replace(/-/g," ")}</h3>
+                            
+                          ) : (
+                            <h3 className={index === 0 ? "first" : ""} key={index}>{tag.replace(/-/g," ")}{index === 0 ? ", " : ""}</h3>
+                          )
+                        )
+                      })}
+                      <h4>{item.author}</h4>
+                    </div>
+                    <h5 onClick={() => removeToLocalHandle(item.uniqueID, "quote")}>remove to your bookmarks</h5>
+                  </div>
+                  <div className="card-content">
+                    <h5 className="card-quote">
+                      {item.content}
+                    </h5>
+                  </div>
+                  <CloseIcon className="close-card" onClick={() => exitHandler()} width="11" height="11" />
+                </div>
+              )
+            })
+          )
         )}
       </div>
     </div>

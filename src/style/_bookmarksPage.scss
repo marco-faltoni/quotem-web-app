@@ -1,17 +1,31 @@
 .wrapper-bookmarks {
   .wrapper-qp {
+    transition: all .7s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+    &.blur {
+      filter: blur(3px);
+      pointer-events: none;
+    }
     .wrapper-half {
       max-height: 100vh;
       padding-bottom: 0rem;
-      padding-top: 6rem;
       
+      &.poem {
+        padding: 1rem 1rem;
+      padding-top: 3rem;
+      }
+      &.quote {
+        padding: 1rem 1rem;
+      }
       @include respond-to('largeTabletUp') {
         padding-top: 0;
         padding: 11rem 3rem;
       }
       .big-tl.pm, .big-tl.qt {
         @include respond-to('largeTabletUp') {
-          font-size: 6rem;
+          font-size: 7rem;
+        }
+        @include respond-to('desktopBigUp') {
+          font-size: 9rem;
         }
       }
       .big-tl.qt  {
@@ -86,6 +100,7 @@
             }
           }
           .card-content {
+            background-color: $white;
             h5 {
               position: relative;
               overflow: hidden;
@@ -119,37 +134,108 @@
           }
         }
       }
+      .big-tl {
+        font-size: 5rem;
+        @include respond-to('largeTabletUp') {
+          font-size: 14rem;
+        }
+        @include respond-to('desktopBigUp') {
+          font-size: 20rem;
+        }
+      }
     } 
   }
   .wrap-btn {
     position: absolute;
-    bottom: 7%;
-    left: 43%;
+    bottom: 46%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
     transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
     &:hover {
-      bottom:8%;
       button {
         transform: scale(1.05);
       }
 
     }
+    @include respond-to('largeTabletUp') {
+      bottom: 0%;
+    }
     button {
       transition: all .9s cubic-bezier(0.215, 0.61, 0.355, 1) ;
-      padding: 1rem 2rem;
+      padding: 0.5rem;
       background: $white;
       border: none;
       border: 1px solid #dbdbdb;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       font-family: $titles;
       box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
       -webkit-box-shadow: -7px 7px 0px -4px rgb(124 167 181 / 48%);
       text-transform: uppercase;
       cursor: pointer;
+      @include respond-to('largeTabletUp') {
+        padding: 1rem 2rem;
+        font-size: 14px;
+      }
       @include respond-to('desktopBigUp') {
         font-size: 20px;
       }
 
+    }
+  }
+  .create {
+    .wrap-animation {
+      background: none;
+      &.show {
+        transform: translateY(0%);
+      }
+    }
+    .form-create {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      .card-info-create, .card-content-create {
+        height: 100%;
+        width: 50%;
+        padding: 1rem;  
+        overflow-y: hidden;
+      }
+      .card-info-create {
+        background-color: $grey;
+        h3 {
+          padding-top: 0;
+          font-family: $titles;
+          font-size: 20px;
+          padding-bottom: 0;
+        }
+        h4 {
+          font-size: 16px;
+        }
+      }
+      .card-content-create {
+        background-color: $white;
+        h5 {
+          position: relative;
+          overflow: hidden;
+          max-height: 100%;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          text-overflow: ellipsis;
+          font-size: 16px;
+          font-weight: 300;
+          @include respond-to('largeTabletUp') {
+            -webkit-line-clamp: 6;
+          }
+        }
+        h5 span {
+          font-size: 14px;
+          @include respond-to('desktopBigUp') {
+            font-size: 16px;
+          }
+        }
+      }
     }
   }
 }
