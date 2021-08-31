@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import {Arrow} from '../../style/Icon';
 import Loader from '../Loader';
@@ -6,15 +6,29 @@ import Loader from '../Loader';
 import {fetchPoem, fetchQuote} from '../../actions/index';
 import {Link} from 'react-router-dom';
 import { motion } from "framer-motion";
-import { sentece, senteceT, letter, letterT, opacity, opacityFast, slideToRight, slideToLeftBig, slideToLeft } from "./animation";
+import { sentece, senteceT, letter, letterT, opacity, opacityFast, slideToRight,slideToRightMbl, slideToLeftBig, slideToLeft, slideToLeftMbl } from "./animation";
 
 const HomeHalf = (props) => {
   // getting back the data from redux
   const {poems, quotes} = useSelector((store) => store);
+  const [rotation, setRotation] = useState(false);
   const { variants } = props;
   const dispatch = useDispatch();
+  const [width, setWidth] = useState(window.innerWidth);
 
-  let isMobile = window.matchMedia("only screen and (max-width: 1024px)").matches;
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  // check if mobile or not
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+        window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
+
+  let isMobile = (width < 1024);
+
   // console.log(poems.randomPoem, quotes.randomQuotes);
   const randomPoem = poems.randomPoem;
   const randomQuote = quotes.randomQuotes;
@@ -28,7 +42,13 @@ const HomeHalf = (props) => {
 		<div className={`${variants === "poems" ? "poem" : "quote"} wrapper-half`}>
       {variants === "poems" && (
         <>
-          <motion.h2 variants={slideToRight} initial="hidden" animate="visible" className="big-tl pm">Poem</motion.h2>
+          <motion.h2  
+            variants={isMobile ? slideToLeftMbl : slideToRight} 
+            initial="hidden" 
+            animate="visible"    
+            className={`big-tl pm ${rotation ? "rotate" : ""}`}
+          >Poem
+          </motion.h2>
           <motion.div variants={senteceT} initial="hidden" animate="visible"  className="reload-page pm" onClick={() => reloadData("poem")}>
             <motion.div variants={slideToLeft} initial="hidden" animate="visible" className="container"></motion.div>
             <motion.h5 variants={letterT} initial="hidden" animate="visible">Get a new Poems</motion.h5>
@@ -121,7 +141,13 @@ const HomeHalf = (props) => {
       )}  
       {variants === "quote" && (
         <>
-          <motion.h2 variants={slideToLeftBig} initial="hidden" animate="visible" className="big-tl qt">Quote</motion.h2>
+          <motion.h2 
+            variants={isMobile ? slideToRightMbl : slideToLeftBig} 
+            initial="hidden" 
+            animate="visible" 
+            className="big-tl qt"
+          >Quote
+          </motion.h2>
           <motion.div 
             className={`quote-wrap ${quotes.isLoading ? "load-wr" : ""}`}
             variants={sentece}

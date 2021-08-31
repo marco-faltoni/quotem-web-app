@@ -69,6 +69,18 @@ export const slideToRight = {
     }
   }
 }
+export const slideToRightMbl = {
+  hidden: { opacity: 0, x: -200, rotate: 90 },
+  visible: {
+    opacity: 0.1,
+    x: 0,
+    rotate: 90,
+    transition: {
+      delay: 2.2,
+      duration: 1.8
+    }
+  }
+}
 export const slideToLeft = {
   hidden: { opacity: 0, x: 300 },
   visible: {
@@ -80,6 +92,20 @@ export const slideToLeft = {
     }
   }
 }
+
+export const slideToLeftMbl = {
+  hidden: { opacity: 0, x: 200, rotate: 270 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    rotate: 270,
+    transition: {
+      delay: 2.2,
+      duration: 1.8
+    }
+  }
+}
+
 export const slideToLeftBig = {
   hidden: { opacity: 0, x: 300 },
   visible: {
