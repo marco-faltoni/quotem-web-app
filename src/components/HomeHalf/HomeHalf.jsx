@@ -37,9 +37,33 @@ const HomeHalf = (props) => {
     val === "poem" ? dispatch(fetchPoem(isMobile ? true : false)) : dispatch(fetchQuote());
     val === "poem" ? dispatch({type: 'TOGGLE_LOADER_POEM'}) : dispatch({type: 'TOGGLE_LOADER_QUOTE'});
   };
+
+  const saveToLocalHandle = (tit, aut, cont, id) => {
+    let store = JSON.parse(localStorage.getItem("QuotemLocalStorage"));
+    let savedItem = {
+      title: tit,
+      author: aut,
+      content: cont,
+      uniqueID: id ? id : tit
+    }
+    let isInCart = false;
+    if (store) {
+      isInCart = store.some(item => item.uniqueID === (id ? id : tit));
+    } else {
+      store = [];
+    }
+    // console.log(isInCart);
+    if (!isInCart) {
+      store.push(savedItem);
+      alert(`${id ? "quote" : "poem"} saved!`)
+    } else {
+      alert(`${id ? "quote" : "poem"} already saved!`)
+    }
+    localStorage.setItem('QuotemLocalStorage', JSON.stringify(store));
+  };
   
 	return (
-		<div className={`${variants === "poems" ? "poem" : "quote"} wrapper-half`}>
+		<motion.div variants={opacityFast} initial="hidden" animate="visible" className={`${variants === "poems" ? "poem" : "quote"} wrapper-half`}>
       {variants === "poems" && (
         <>
           <motion.h2  
@@ -102,9 +126,11 @@ const HomeHalf = (props) => {
                       {poem.author}
                     </motion.h4>
                     <motion.div
-                      variants={opacity} initial="hidden" animate="visible"
+                      variants={opacity} initial="hidden" animate="visible" className="book-m"
+                      onClick={() => saveToLocalHandle(poem.title, poem.author, poem.lines)}
                     >
                       <Arrow />
+                      <h5>add poem to your bookmarks</h5>
                     </motion.div>
                     
                   </motion.div>
@@ -174,9 +200,11 @@ const HomeHalf = (props) => {
                   {randomQuote.author}
                 </motion.h4>
                 <motion.div
-                  variants={opacity} initial="hidden" animate="visible"
+                  variants={opacity} initial="hidden" animate="visible" className="book-m"
+                  onClick={() => saveToLocalHandle(randomQuote.tags, randomQuote.author, randomQuote.content, randomQuote._id)}
                 >
                   <Arrow />
+                  <h5>add quote to your bookmarks</h5>
                 </motion.div>
               </motion.div>
               <div>
@@ -207,15 +235,30 @@ const HomeHalf = (props) => {
             <motion.div variants={slideToRight} initial="hidden" animate="visible" className="container"></motion.div>
             <motion.h5 variants={letterT} initial="hidden" animate="visible" >Get a new Quote</motion.h5>
           </motion.div>
-          <div className="change-page qt">
-            <motion.div className="container"></motion.div>
+          <motion.div 
+            className="change-page qt"
+            variants={senteceT}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div 
+              className="container"
+              variants={slideToLeft} 
+              initial="hidden"
+              animate="visible"
+            ></motion.div>
             <Link to={`/quotes`} >
-              <motion.h5>Go to Quotes</motion.h5>
+              <motion.h5
+                variants={letterT}
+                initial="hidden"
+                animate="visible"
+              >Go to Quotes
+              </motion.h5>
             </Link>
-          </div>
+          </motion.div>
         </>
       )}  
-		</div>
+		</motion.div>
 	);
 }
 

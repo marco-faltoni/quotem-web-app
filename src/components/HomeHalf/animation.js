@@ -13,7 +13,7 @@ export const senteceT = {
   visible: {
     opacity: 1,
     transition: {
-      delay: 2.8,
+      delay: 3.1,
       staggerChildren: 1,
     }
   }
@@ -64,7 +64,7 @@ export const slideToRight = {
     opacity: 1,
     x: 0,
     transition: {
-      delay: 2.2,
+      delay: 1.7,
       duration: 1.8
     }
   }
@@ -76,7 +76,7 @@ export const slideToRightMbl = {
     x: 0,
     rotate: 90,
     transition: {
-      delay: 2.2,
+      delay: 1.7,
       duration: 1.8
     }
   }
@@ -87,7 +87,7 @@ export const slideToLeft = {
     opacity: 1,
     x: 0,
     transition: {
-      delay: 2.2,
+      delay: 1.7,
       duration: 1.8
     }
   }
@@ -100,7 +100,7 @@ export const slideToLeftMbl = {
     x: 0,
     rotate: 270,
     transition: {
-      delay: 2.2,
+      delay: 1.7,
       duration: 1.8
     }
   }
@@ -112,7 +112,7 @@ export const slideToLeftBig = {
     opacity: 0.1,
     x: 0,
     transition: {
-      delay: 2.2,
+      delay:1.7,
       duration: 1.8
     }
   }

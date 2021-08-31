@@ -173,7 +173,6 @@ export const fetchAuhtorClicked = (type, val) => async (dispatch) => {
   try {
     const resFetch = await axios.get(fetchURL);
     // console.log(resFetch);
-    let resFiltered;
 
     if (type === "poem") {
       dispatch({
@@ -257,7 +256,7 @@ function shuffle(array) {
   var currentIndex = array.length, randomIndex;
 
   // While there remain elements to shuffle...
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
 
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);

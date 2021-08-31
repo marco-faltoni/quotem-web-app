@@ -3,6 +3,8 @@ import React, {useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 // actions
 import {fetchSearch} from '../../actions/search';
+import { motion } from "framer-motion";
+import { slideToRight } from "./animation";
 
 
 const SearchInput = (props) => {
@@ -55,13 +57,8 @@ const SearchInput = (props) => {
     setTextInput('');
   }
 
-  const clearSearch = () => {
-    // dispatch({type: "CLEAR_SEARCHED"});
-  }
-
-
   return (
-    <div className={`input-wrapper`}>
+    <motion.div variants={slideToRight} initial="hidden" animate="visible" className={`input-wrapper`}>
       <form onSubmit={submitSearch} className="search">
         <input value={textInput} onChange={inputHandler} type="text" placeholder={`search for ${valueInput}...`}/>
         <button type='submit'>
@@ -93,7 +90,7 @@ const SearchInput = (props) => {
         )}
 
       </div>
-    </div>
+    </motion.div>
   );
 };
 

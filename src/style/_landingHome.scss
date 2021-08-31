@@ -61,7 +61,8 @@
       h2 {
         line-height: 1;
         padding-bottom: 1rem;
-        font-size: 25px;
+        font-size: 19px;
+        // text-transform: uppercase;
         @include respond-to('largeTabletUp') {
           font-size: 40px;
         }
@@ -395,7 +396,21 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        cursor: pointer;
+        // cursor: pointer;
+        .book-m {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            h5 {
+              font-weight: 700;
+            }
+          }
+          h5 {
+            font-style: italic;
+            font-weight: 400;
+          }
+        }
       }
       .quote-wrap .author-wrap {
         justify-content: flex-end;

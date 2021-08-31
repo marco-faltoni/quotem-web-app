@@ -2,8 +2,8 @@ import React from "react";
 
 export const Arrow = (props) => {
   return (
-    <svg width={props.size || "70"} height={props.size || "9"} viewBox="0 0 82 12  " fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M75.779 11.1776L75.955 11.352L76.1309 11.1776L81.176 6.17756L81.3551 6L81.176 5.82243L76.1309 0.822426L75.955 0.648015L75.779 0.822426L74.7599 1.83243L74.5807 2.00999L74.7599 2.18756L77.6337 5.03571L0.999999 5.03571L0.749999 5.03571L0.75 5.28571L0.75 6.71429L0.75 6.96429L1 6.96429L77.6337 6.96428L74.7599 9.81243L74.5807 9.99L74.7599 10.1676L75.779 11.1776Z" fill={props.fill || "#17181A"}/>
+    <svg width={props.size || "59"} height={props.size || "1"} viewBox="0 0 59 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line y1="1" x2="59" y2="1" stroke="#2E3A59" strokeWidth="2"/>
     </svg>
   );
 };

@@ -10,7 +10,6 @@ const CardDetails = (props) => {
   const [local, setLocal] = useState();
   const dispatch = useDispatch();
   const { randomPoems, randomQuotes, bookmarks } = props;
-  
 
   useEffect(() => {
     const data = localStorage.getItem('QuotemLocalStorage')

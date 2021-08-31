@@ -7,6 +7,8 @@ import Loader from '../Loader';
 // Redux
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchRandomList} from '../../actions/search';
+import { motion } from "framer-motion";
+import { opacityFast, slideToRight, slideToLeftBig, sliderContainer} from "./animation";
 
 const SearchHalf = (props) => {
   // getting back the data from redux
@@ -45,39 +47,39 @@ const SearchHalf = (props) => {
 
 
   return (
-    <div className={`wrapper-half ${search ? "search" : "results"} poems`}>
+    <motion.div variants={opacityFast} initial="hidden" animate="visible" className={`wrapper-half ${search ? "search" : "results"} poems`}>
       {search && (
         <>
-          <h2 className="big-tl sr pm">Search {variants === "poems" ? "Poems" : "Quotes"}</h2>
+          <motion.h2 variants={slideToRight} className="big-tl sr pm">Search {variants === "poems" ? "Poems" : "Quotes"}</motion.h2>
           {variants === "poems" ? <SearchInput poemInput /> : <SearchInput quoteInput />}
           {variants === "poems" ? <Suggests poemSuggests /> : <Suggests quoteSuggests />}
         </>
       )}
       {results && (
         <>
-          <h2 className="big-tl sr qt">
+          <motion.h2 variants={slideToLeftBig} className="big-tl sr qt">
             {menu.noResults ? (
               "No Results"
             ): (
               menu.valueSaved !== null ? menu.valueSaved : "Random"
             )}
-          </h2>
+          </motion.h2>
           {menu.isLoading ? (
-            <div className="loading-results">
+            <motion.div className="loading-results">
               <div className="ld-wrap">
                 <Loader />
               </div>
-            </div>
+            </motion.div>
           ) : ( 
-            <div className="wrapper-cards">
+            <motion.div variants={sliderContainer} initial="hidden" animate="show" className="wrapper-cards">
               {variants === "poems" ? <Card randomPoems /> : <Card randomQuotes />}
-            </div>
+            </motion.div>
           )}
 
           
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 

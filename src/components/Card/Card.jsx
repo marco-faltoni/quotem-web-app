@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 // Redux
 import { useSelector, useDispatch} from 'react-redux';
+import { motion } from "framer-motion";
+import { slideUp } from "./animation";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation } from "swiper";
@@ -75,7 +77,7 @@ const Card = (props) => {
     for (let i = 0; i < getSlides.length; i++) {
       slidesIn.push(
         <SwiperSlide key={`slide-${i}`} className={"slideIn" + getSlides[i].index} data-slider={i}>
-          <div className="card-wrapper" onClick={() => loadDetailsHandler(getSlides[i])}>
+          <motion.div variants={slideUp} initial="hidden" animate="show" className="card-wrapper" onClick={() => loadDetailsHandler(getSlides[i])}>
             <div className="card-info">
               <h3>{getSlides[i].title}</h3>
               <h4>{getSlides[i].author}</h4>
@@ -92,7 +94,7 @@ const Card = (props) => {
                 })}
               </h5>
             </div>
-          </div>
+          </motion.div>
         </SwiperSlide>
       );
     }
@@ -102,7 +104,7 @@ const Card = (props) => {
     for (let i = 0; i < getSlides.length; i++) {
       slidesIn.push(
         <SwiperSlide key={`slide-${i}`} className={"slideIn" + getSlides[i].index} data-slider={i}>
-          <div className="card-wrapper" onClick={() => loadDetailsHandler(getSlides[i])}>
+          <motion.div  variants={slideUp} initial="hidden" animate="show" className="card-wrapper" onClick={() => loadDetailsHandler(getSlides[i])}>
             <div className="card-info">
               {getSlides[i].tags?.map((tag, index)=> {
                 const tagsLength = getSlides[i].tags.length;
@@ -121,7 +123,7 @@ const Card = (props) => {
                 {getSlides[i].content}
               </h5>
             </div>
-          </div>
+          </motion.div>
         </SwiperSlide>
       );
     }
@@ -151,7 +153,7 @@ const Card = (props) => {
           ) : (
             poems.searched?.map((item, index)=> {
               return (
-                <div key={index} className="card-wrapper" onClick={() => loadDetailsHandler(item)}>
+                <motion.div variants={slideUp} initial="hidden" animate="show" key={index} className="card-wrapper" onClick={() => loadDetailsHandler(item)}>
                   <div className="card-info">
                     <h3>{item.title}</h3>
                     <h4>{item.author}</h4>
@@ -168,7 +170,7 @@ const Card = (props) => {
                       })}
                     </h5>
                   </div>
-                </div>
+                </motion.div>
               )
             })
           )
@@ -195,7 +197,7 @@ const Card = (props) => {
           ) : (
             quotes.searched?.map((item, index)=> {
               return (
-                <div key={index} className="card-wrapper" onClick={() => loadDetailsHandler(item)}>
+                <motion.div variants={slideUp} initial="hidden" animate="show" key={index} className="card-wrapper" onClick={() => loadDetailsHandler(item)}>
                   <div className="card-info">
                     {item.tags?.map((tag, index)=> {
                       const tagsLength = item.tags.length;
@@ -213,7 +215,7 @@ const Card = (props) => {
                       {item.content}
                     </h5>
                   </div>
-                </div>
+                </motion.div>
               )
             })
           )

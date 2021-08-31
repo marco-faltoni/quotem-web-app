@@ -2,6 +2,8 @@ import React, {useEffect} from "react";
 // Redux
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchAuthors, fetchAuhtorClicked,} from '../../actions/search';
+import { motion } from "framer-motion";
+import { sentece, letter } from "./animation";
 
 const Suggests = (props) => {
   // getting back the data from redux
@@ -41,29 +43,29 @@ const Suggests = (props) => {
   },[dispatch]);
 
   return (
-    <div className={`suggests-wrapper`}>
-      <h3>recommended authors</h3>
-      <div className="authors-wrapper">
+    <motion.div initial="hidden" animate="visible" className={`suggests-wrapper`}>
+      <motion.h3 variants={letter}>recommended authors</motion.h3>
+      <motion.div variants={sentece} className="authors-wrapper">
         {poemSuggests && (
           poems.authorList?.map((aut, index)=> {
             return (
-              <h4 key={index} onClick={() => handleAuthor("poem", aut)}>
+              <motion.h4 variants={letter} key={index} onClick={() => handleAuthor("poem", aut)}>
                 {aut}
-              </h4>
+              </motion.h4>
             )
           })
         )}
         {quoteSuggests && (
           quotes.authorList?.map((aut, index)=> {
             return(
-              <h4 key={index} onClick={() => handleAuthor("quote", aut.name)}>
+              <motion.h4 variants={letter} key={index} onClick={() => handleAuthor("quote", aut.name)}>
                 {aut.name}
-              </h4>
+              </motion.h4>
             )
           })
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

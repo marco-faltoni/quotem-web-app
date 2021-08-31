@@ -2,8 +2,9 @@ import React, {useState, useEffect} from "react";
 import {Link} from 'react-router-dom';
 // Redux
 import {useDispatch, useSelector} from 'react-redux';
+import { motion } from "framer-motion";
+import { opacityFast, slideToRight, slideToLeftBig, slideUp} from "./animation";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination, Navigation } from "swiper";
 // swiper bundle styles
 import 'swiper/swiper-bundle.min.css'
 // swiper core styles
@@ -92,7 +93,7 @@ const BookmarksHalf = (props) => {
     for (let i = 0; i < getSlides.length; i++) {
       slidesIn.push(
         <SwiperSlide key={`slide-${i}`} className={"slideIn" + getSlides[i].index} data-slider={i}>
-          <div className="card-wrapper" onClick={() => loadDetailsHandler(getSlides[i])}>
+          <motion.div variants={slideUp} initial="hidden" animate="show" className="card-wrapper" onClick={() => loadDetailsHandler(getSlides[i])}>
             <div className="card-info">
               <h3>{getSlides[i].title}</h3>
               <h4>{getSlides[i].author}</h4>
@@ -109,7 +110,7 @@ const BookmarksHalf = (props) => {
                 })}
               </h5>
             </div>
-          </div>
+          </motion.div>
         </SwiperSlide>
       );
     }
@@ -119,7 +120,7 @@ const BookmarksHalf = (props) => {
     for (let i = 0; i < getSlides.length; i++) {
       slidesIn.push(
         <SwiperSlide key={`slide-${i}`} className={"slideIn" + getSlides[i].index} data-slider={i}>
-          <div className="card-wrapper" onClick={() => loadDetailsHandler(getSlides[i])}>
+          <motion.div variants={slideUp} initial="hidden" animate="show" className="card-wrapper" onClick={() => loadDetailsHandler(getSlides[i])}>
             <div className="card-info">
               {getSlides[i].title?.map((tag, index)=> {
                 const tagsLength = getSlides[i].title.length;
@@ -138,17 +139,17 @@ const BookmarksHalf = (props) => {
                 {getSlides[i].content}
               </h5>
             </div>
-          </div>
+          </motion.div>
         </SwiperSlide>
       );
     }
   }
 
   return (
-    <div className={`wrapper-half bookmarks ${poems ? "poem" : "quote"}`}>
+    <motion.div variants={opacityFast} initial="hidden" animate="visible" className={`wrapper-half bookmarks ${poems ? "poem" : "quote"}`}>
       {poems && (
         <>
-        <h2 className="big-tl pm">Saved Poems</h2>
+        <motion.h2 variants={slideToRight} className="big-tl pm">Saved Poems</motion.h2>
         {arrayPoems.length > 0 ? (
           isMobile ? (
             <div className="wrapper-cards bookmarks-poem">
@@ -167,10 +168,10 @@ const BookmarksHalf = (props) => {
               </Swiper>
             </div>
             ) : (
-            <div className="wrapper-cards bookmarks-poem">
+            <motion.div className="wrapper-cards bookmarks-poem">
               {arrayPoems.map((item, index) => {
                 return (
-                  <div key={index} className="card-wrapper" onClick={() => loadDetailsHandler(item)}>
+                  <motion.div key={index} variants={slideUp} initial="hidden" animate="show" className="card-wrapper" onClick={() => loadDetailsHandler(item)}>
                     <div className="card-info">
                       <h3>{item.title}</h3>
                       <h4>{item.author}</h4>
@@ -187,10 +188,10 @@ const BookmarksHalf = (props) => {
                         })}
                       </h5>
                     </div>
-                  </div>
+                  </motion.div>
                 )
               })}
-            </div>
+            </motion.div>
           )
           
         ) : (
@@ -200,7 +201,7 @@ const BookmarksHalf = (props) => {
       )}
       {quotes && (
         <>
-        <h2 className="big-tl qt">Saved Quotes</h2>
+        <motion.h2 variants={slideToLeftBig} className="big-tl qt">Saved Quotes</motion.h2>
         {arrayQuotes.length > 0 ? (
           isMobile ? (
             <div className="wrapper-cards bookmarks-poem">
@@ -222,7 +223,7 @@ const BookmarksHalf = (props) => {
             <div className="wrapper-cards">
               {arrayQuotes.map((item, index) => {
                 return (
-                  <div key={index} className="card-wrapper" onClick={() => loadDetailsHandler(item)}>
+                  <motion.div key={index} variants={slideUp} initial="hidden" animate="show" className="card-wrapper" onClick={() => loadDetailsHandler(item)}>
                     <div className="card-info">
                       {item.title?.map((tag, index)=> {
                         const tagsLength = item.title.length;
@@ -240,17 +241,17 @@ const BookmarksHalf = (props) => {
                         {item.content}
                       </h5>
                     </div>
-                  </div>
+                  </motion.div>
                 )
               })}
             </div>
           )
         ) : (
-          <h3 className="no-results">No Quote Saved. Go to <Link to={`/quotes`} ><span className="go-to">search page</span></Link> and bookmark some quotes.</h3>
+          <motion.h3 className="no-results">No Quote Saved. Go to <Link to={`/quotes`} ><span className="go-to">search page</span></Link> and bookmark some quotes.</motion.h3>
         )}
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 

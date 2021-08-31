@@ -164,12 +164,16 @@
           gap: 0.6rem;
           @include respond-to('largeTabletUp') {
             gap: 1rem;
+            min-height: 10rem;
+          }
+          @include respond-to('desktopBigUp') {
+            min-height: 13rem;
           }
           h4 {
             opacity: 0.3;
             transition: all .7s cubic-bezier(0.215, 0.61, 0.355, 1) ;
             &:hover {
-              opacity: 1;
+              opacity: 1 !important;
             }
           }
         }
@@ -243,15 +247,19 @@
           }
           h3 {
             font-family: $titles;
-            font-size: 26px;
+            font-size: 18px;
             @include respond-to('largeTabletUp') {
               font-size: 30px;
             }
           }
         }
         h5 {
-          font-size: 17px;
+          font-size: 13px;
           cursor: pointer;
+          font-style: italic;
+          @include respond-to('largeTabletUp') {
+            font-size: 17px;
+          }
         }
       }
       .card-content {
@@ -294,10 +302,15 @@
     .close-card {
       cursor: pointer;
       position: absolute;
-      right: 2%;
+      right: 5%;
       top: 4%;
-      height: 18px;
-      width: 18px;
+      height: 14px;
+      width: 14px;
+      @include respond-to('largeTabletUp') {
+        right: 2%;
+        height: 18px;
+        width: 18px;
+      }
     }
   }
 }
